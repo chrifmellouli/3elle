@@ -1,17 +1,25 @@
 <?php
 
 require 'models/user.model.php';
+require 'daoImpl/UserDaoImpl.php';
+
+/**
+ * Class UserController
+ */
 class UserController
 {
-    protected User $_user;
+    /**
+     * @var UserDaoImpl
+     */
+    protected UserDaoImpl $_user_dao_impl;
 
     /**
      * UserController constructor.
-     * @param User $_user
+     * @param UserDaoImpl $_user_dao_impl
      */
-    public function __construct(User $_user)
+    public function __construct(UserDaoImpl $_user_dao_impl)
     {
-        $this->_user = $_user;
+        $this->_user_dao_impl = $_user_dao_impl;
     }
 
 }

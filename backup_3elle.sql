@@ -71,6 +71,56 @@ LOCK TABLES `history` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `multimedia`
+--
+
+DROP TABLE IF EXISTS `multimedia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `multimedia` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `multimedia`
+--
+
+LOCK TABLES `multimedia` WRITE;
+/*!40000 ALTER TABLE `multimedia` DISABLE KEYS */;
+/*!40000 ALTER TABLE `multimedia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `post` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) DEFAULT NULL,
+  `id_multimedia` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `post_code_uindex` (`code`),
+  KEY `post_multimedia_id_fk` (`id_multimedia`),
+  CONSTRAINT `post_multimedia_id_fk` FOREIGN KEY (`id_multimedia`) REFERENCES `multimedia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post`
+--
+
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `privilege`
 --
 
@@ -94,6 +144,32 @@ LOCK TABLES `privilege` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product_promoted`
+--
+
+DROP TABLE IF EXISTS `product_promoted`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_promoted` (
+  `product` int NOT NULL,
+  `promotion` int NOT NULL,
+  PRIMARY KEY (`product`,`promotion`),
+  KEY `product_promoted___fk2` (`promotion`),
+  CONSTRAINT `product_promoted___fk1` FOREIGN KEY (`product`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `product_promoted___fk2` FOREIGN KEY (`promotion`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_promoted`
+--
+
+LOCK TABLES `product_promoted` WRITE;
+/*!40000 ALTER TABLE `product_promoted` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_promoted` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -110,7 +186,7 @@ CREATE TABLE `user` (
   `enabled` tinyint(1) DEFAULT NULL,
   `is_connected` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +195,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'chrif','mellouli',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -131,4 +208,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-31  7:04:10
+-- Dump completed on 2021-01-01  5:25:30
