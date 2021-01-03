@@ -80,12 +80,4 @@ class Post
         $this->_id_multimedia = $id_multimedia;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br>Post<br>------<br> id : " . $this->getId() . "<br> code : " . $this->getCode() . "<br> multimedia : " . $this->getIdMultimedia() . "<br>------<br>";
-    }
-
 }

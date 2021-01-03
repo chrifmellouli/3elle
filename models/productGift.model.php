@@ -80,12 +80,4 @@ class ProductGift
         $this->_number = $number;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br> ProductGift <br> product : " . $this->getIdProduct() . "<br> promotion : " . $this->getIdPromotion() . "<br> number : <br>" . $this->getNumber() . "<br>------<br>";
-    }
-
 }

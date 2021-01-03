@@ -4,7 +4,7 @@
 /**
  * Class FreeDelivery
  */
-class FreeDelivery implements PromotionAct
+class FreeDelivery
 {
     /**
      * @var int
@@ -56,22 +56,6 @@ class FreeDelivery implements PromotionAct
     public function setIdPromotedAct(int $id_promoted_act): void
     {
         $this->_id_promoted_act = $id_promoted_act;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    function rewarding(): void
-    {
-        // TODO: Implement rewarding() method.
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>-------<br>Free delivery<br> id : " . $this->getId() . "<br> promoted act : " . $this->_id_promoted_act . "<br>------<br>";
     }
 
 }

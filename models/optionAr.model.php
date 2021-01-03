@@ -2,9 +2,9 @@
 
 
 /**
- * Class Privilege
+ * Class OptionAr
  */
-class Privilege
+class OptionAr
 {
     /**
      * @var int
@@ -14,18 +14,23 @@ class Privilege
      * @var string
      */
     private string $_designation;
+    /**
+     * @var int
+     */
+    private int $_id_option;
 
     /**
-     * Privilege constructor.
+     * OptionAr constructor.
      * @param int $_id
      * @param string $_designation
+     * @param int $_id_option
      */
-    public function __construct(int $_id, string $_designation)
+    public function __construct(int $_id, string $_designation, int $_id_option)
     {
-        $this->setId($_id);
-        $this->setDesignation($_designation);
+        $this->_id = $_id;
+        $this->_designation = $_designation;
+        $this->_id_option = $_id_option;
     }
-
 
     /**
      * @return int
@@ -44,7 +49,7 @@ class Privilege
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getDesignation(): string
     {
@@ -52,11 +57,27 @@ class Privilege
     }
 
     /**
-     * @param String $designation
+     * @param string $designation
      */
     public function setDesignation(string $designation): void
     {
         $this->_designation = $designation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdOption(): int
+    {
+        return $this->_id_option;
+    }
+
+    /**
+     * @param int $id_option
+     */
+    public function setIdOption(int $id_option): void
+    {
+        $this->_id_option = $id_option;
     }
 
 }

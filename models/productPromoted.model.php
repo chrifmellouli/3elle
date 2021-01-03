@@ -58,12 +58,4 @@ class ProductPromoted
         $this->_id_promotion = $id_promotion;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br> ProductPromoted <br> product : " . $this->getIdProduct() . "<br> promotion : <br>" . $this->getIdPromotion() . "<br>------<br>";
-    }
-
 }

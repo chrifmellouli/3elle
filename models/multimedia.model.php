@@ -58,12 +58,4 @@ class Multimedia
         $this->_file = $file;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br> multimedia<br> id :  " . $this->getId() . "<br> file : " . $this->getFile() . "<br>------<br>";
-    }
-
 }

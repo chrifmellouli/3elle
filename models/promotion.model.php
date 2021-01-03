@@ -22,6 +22,7 @@ class Promotion
      * @var int
      */
     private int $_id_act_promotion;
+    private int $_id_post;
 
     /**
      * Promotion constructor.
@@ -29,13 +30,15 @@ class Promotion
      * @param DateTime $_start_date
      * @param DateTime $_end_date
      * @param int $_id_act_promotion
+     * @param int $_id_post
      */
-    public function __construct(int $_id, DateTime $_start_date, DateTime $_end_date, int $_id_act_promotion)
+    public function __construct(int $_id, DateTime $_start_date, DateTime $_end_date, int $_id_act_promotion, int $_id_post)
     {
-        $this->setId($_id);
-        $this->setStartDate($_start_date);
-        $this->setEndDate($_end_date);
-        $this->setIdActPromotion($_id_act_promotion);
+        $this->_id = $_id;
+        $this->_start_date = $_start_date;
+        $this->_end_date = $_end_date;
+        $this->_id_act_promotion = $_id_act_promotion;
+        $this->_id_post = $_id_post;
     }
 
     /**
@@ -102,17 +105,20 @@ class Promotion
         $this->_id_act_promotion = $id_act_promotion;
     }
 
-    function rewarding(int $id_act_promotion): void
+    /**
+     * @return int
+     */
+    public function getIdPost(): int
     {
-        // TODO: Implement rewarding() method.
+        return $this->_id_post;
     }
 
     /**
-     * @return string
+     * @param int $id_post
      */
-    public function __toString(): string
+    public function setIdPost(int $id_post): void
     {
-        return "<br>------<br>promotion<br> id : <br>" . $this->getId() . "<br> start date : " . $this->getStartDate()->format('Y-m-d H:i:s') . "<br> end date : " . $this->getEndDate()->format('Y-m-d H:i:s') . "<br> act promotion : " . $this->getIdActPromotion() . "<br>------<br>";
+        $this->_id_post = $id_post;
     }
 
 }

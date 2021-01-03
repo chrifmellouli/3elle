@@ -43,6 +43,82 @@ LOCK TABLES `authorization` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `category_code_uindex` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category_ar`
+--
+
+DROP TABLE IF EXISTS `category_ar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `category_ar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(50) DEFAULT NULL,
+  `id_category` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category_ar_category_id_fk` (`id_category`),
+  CONSTRAINT `category_ar_category_id_fk` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_ar`
+--
+
+LOCK TABLES `category_ar` WRITE;
+/*!40000 ALTER TABLE `category_ar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category_ar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category_fr`
+--
+
+DROP TABLE IF EXISTS `category_fr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `category_fr` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(255) DEFAULT NULL,
+  `id_category` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category_fr_category_id_fk` (`id_category`),
+  CONSTRAINT `category_fr_category_id_fk` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_fr`
+--
+
+LOCK TABLES `category_fr` WRITE;
+/*!40000 ALTER TABLE `category_fr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category_fr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `discount`
 --
 
@@ -66,6 +142,58 @@ CREATE TABLE `discount` (
 LOCK TABLES `discount` WRITE;
 /*!40000 ALTER TABLE `discount` DISABLE KEYS */;
 /*!40000 ALTER TABLE `discount` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discount_on_order`
+--
+
+DROP TABLE IF EXISTS `discount_on_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `discount_on_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_amount` float DEFAULT NULL,
+  `id_discount` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `discount_on_order_discount_id_fk` (`id_discount`),
+  CONSTRAINT `discount_on_order_discount_id_fk` FOREIGN KEY (`id_discount`) REFERENCES `discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discount_on_order`
+--
+
+LOCK TABLES `discount_on_order` WRITE;
+/*!40000 ALTER TABLE `discount_on_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `discount_on_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discount_on_product`
+--
+
+DROP TABLE IF EXISTS `discount_on_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `discount_on_product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_number` int DEFAULT NULL,
+  `id_discount` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `discount_on_product_discount_id_fk` (`id_discount`),
+  CONSTRAINT `discount_on_product_discount_id_fk` FOREIGN KEY (`id_discount`) REFERENCES `discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discount_on_product`
+--
+
+LOCK TABLES `discount_on_product` WRITE;
+/*!40000 ALTER TABLE `discount_on_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `discount_on_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -94,6 +222,58 @@ LOCK TABLES `free_delivery` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `free_delivery_order`
+--
+
+DROP TABLE IF EXISTS `free_delivery_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `free_delivery_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_amount` float DEFAULT NULL,
+  `id_free_delivery` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `free_delivery_order_free_delivery_id_fk` (`id_free_delivery`),
+  CONSTRAINT `free_delivery_order_free_delivery_id_fk` FOREIGN KEY (`id_free_delivery`) REFERENCES `free_delivery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `free_delivery_order`
+--
+
+LOCK TABLES `free_delivery_order` WRITE;
+/*!40000 ALTER TABLE `free_delivery_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `free_delivery_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `free_delivery_product`
+--
+
+DROP TABLE IF EXISTS `free_delivery_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `free_delivery_product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_number` int DEFAULT NULL,
+  `id_free_delivery` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `free_delivery_product_free_delivery_id_fk` (`id_free_delivery`),
+  CONSTRAINT `free_delivery_product_free_delivery_id_fk` FOREIGN KEY (`id_free_delivery`) REFERENCES `free_delivery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `free_delivery_product`
+--
+
+LOCK TABLES `free_delivery_product` WRITE;
+/*!40000 ALTER TABLE `free_delivery_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `free_delivery_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gift`
 --
 
@@ -116,6 +296,58 @@ CREATE TABLE `gift` (
 LOCK TABLES `gift` WRITE;
 /*!40000 ALTER TABLE `gift` DISABLE KEYS */;
 /*!40000 ALTER TABLE `gift` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gift_on_product`
+--
+
+DROP TABLE IF EXISTS `gift_on_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gift_on_product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_number` int DEFAULT NULL,
+  `id_gift` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `gift_on_product_gift_id_fk` (`id_gift`),
+  CONSTRAINT `gift_on_product_gift_id_fk` FOREIGN KEY (`id_gift`) REFERENCES `gift` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gift_on_product`
+--
+
+LOCK TABLES `gift_on_product` WRITE;
+/*!40000 ALTER TABLE `gift_on_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gift_on_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `git_on_order`
+--
+
+DROP TABLE IF EXISTS `git_on_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `git_on_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_amount` float DEFAULT NULL,
+  `id_gift` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `git_on_order_gift_id_fk` (`id_gift`),
+  CONSTRAINT `git_on_order_gift_id_fk` FOREIGN KEY (`id_gift`) REFERENCES `gift` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `git_on_order`
+--
+
+LOCK TABLES `git_on_order` WRITE;
+/*!40000 ALTER TABLE `git_on_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `git_on_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -169,6 +401,160 @@ LOCK TABLES `multimedia` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `option`
+--
+
+DROP TABLE IF EXISTS `option`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option`
+--
+
+LOCK TABLES `option` WRITE;
+/*!40000 ALTER TABLE `option` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option_ar`
+--
+
+DROP TABLE IF EXISTS `option_ar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option_ar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(255) DEFAULT NULL,
+  `id_option` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `option_ar_option_id_fk` (`id_option`),
+  CONSTRAINT `option_ar_option_id_fk` FOREIGN KEY (`id_option`) REFERENCES `option` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option_ar`
+--
+
+LOCK TABLES `option_ar` WRITE;
+/*!40000 ALTER TABLE `option_ar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option_ar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option_fr`
+--
+
+DROP TABLE IF EXISTS `option_fr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option_fr` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(255) DEFAULT NULL,
+  `id_option` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `option_fr_option_id_fk` (`id_option`),
+  CONSTRAINT `option_fr_option_id_fk` FOREIGN KEY (`id_option`) REFERENCES `option` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option_fr`
+--
+
+LOCK TABLES `option_fr` WRITE;
+/*!40000 ALTER TABLE `option_fr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option_fr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option_value`
+--
+
+DROP TABLE IF EXISTS `option_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option_value` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_product` int NOT NULL,
+  `id_option` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `option_value_id_option_id_product_uindex` (`id_option`,`id_product`),
+  KEY `option_value_product_id_fk` (`id_product`),
+  CONSTRAINT `option_value_option_id_fk` FOREIGN KEY (`id_option`) REFERENCES `option` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `option_value_product_id_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option_value`
+--
+
+LOCK TABLES `option_value` WRITE;
+/*!40000 ALTER TABLE `option_value` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option_value` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option_value_ar`
+--
+
+DROP TABLE IF EXISTS `option_value_ar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option_value_ar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `value` varchar(50) DEFAULT NULL,
+  `id_option_value` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `option_value_ar_option_value_id_fk` (`id_option_value`),
+  CONSTRAINT `option_value_ar_option_value_id_fk` FOREIGN KEY (`id_option_value`) REFERENCES `option_value` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option_value_ar`
+--
+
+LOCK TABLES `option_value_ar` WRITE;
+/*!40000 ALTER TABLE `option_value_ar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option_value_ar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `option_value_fr`
+--
+
+DROP TABLE IF EXISTS `option_value_fr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `option_value_fr` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `value` varchar(50) DEFAULT NULL,
+  `id_option_value` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `option_value_fr_option_value_id_fk` (`id_option_value`),
+  CONSTRAINT `option_value_fr_option_value_id_fk` FOREIGN KEY (`id_option_value`) REFERENCES `option_value` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `option_value_fr`
+--
+
+LOCK TABLES `option_value_fr` WRITE;
+/*!40000 ALTER TABLE `option_value_fr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `option_value_fr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `post`
 --
 
@@ -216,6 +602,91 @@ CREATE TABLE `privilege` (
 LOCK TABLES `privilege` WRITE;
 /*!40000 ALTER TABLE `privilege` DISABLE KEYS */;
 /*!40000 ALTER TABLE `privilege` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `vat` float DEFAULT NULL,
+  `price_ex_vat` float DEFAULT NULL,
+  `mark` varchar(50) DEFAULT NULL,
+  `id_post` int NOT NULL,
+  `id_category` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_category_id_fk` (`id_category`),
+  KEY `product_post_id_fk` (`id_post`),
+  CONSTRAINT `product_category_id_fk` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `product_post_id_fk` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_ar`
+--
+
+DROP TABLE IF EXISTS `product_ar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_ar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(255) DEFAULT NULL,
+  `description` text,
+  `id_product` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_ar_product_id_fk` (`id_product`),
+  CONSTRAINT `product_ar_product_id_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_ar`
+--
+
+LOCK TABLES `product_ar` WRITE;
+/*!40000 ALTER TABLE `product_ar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_ar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_fr`
+--
+
+DROP TABLE IF EXISTS `product_fr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_fr` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(255) DEFAULT NULL,
+  `description` text,
+  `id_product` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_fr_product_id_fk` (`id_product`),
+  CONSTRAINT `product_fr_product_id_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_fr`
+--
+
+LOCK TABLES `product_fr` WRITE;
+/*!40000 ALTER TABLE `product_fr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -283,8 +754,11 @@ CREATE TABLE `promotion` (
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
   `id_act_promoted` int NOT NULL,
+  `id_post` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `promotion_promotion_act_id_fk` (`id_act_promoted`),
+  KEY `promotion_post_id_fk` (`id_post`),
+  CONSTRAINT `promotion_post_id_fk` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `promotion_promotion_act_id_fk` FOREIGN KEY (`id_act_promoted`) REFERENCES `promotion_act` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -318,6 +792,60 @@ CREATE TABLE `promotion_act` (
 LOCK TABLES `promotion_act` WRITE;
 /*!40000 ALTER TABLE `promotion_act` DISABLE KEYS */;
 /*!40000 ALTER TABLE `promotion_act` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `promotion_ar`
+--
+
+DROP TABLE IF EXISTS `promotion_ar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `promotion_ar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text,
+  `id_promotion` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `promotion_ar_promotion_id_fk` (`id_promotion`),
+  CONSTRAINT `promotion_ar_promotion_id_fk` FOREIGN KEY (`id_promotion`) REFERENCES `promotion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promotion_ar`
+--
+
+LOCK TABLES `promotion_ar` WRITE;
+/*!40000 ALTER TABLE `promotion_ar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promotion_ar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `promotion_fr`
+--
+
+DROP TABLE IF EXISTS `promotion_fr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `promotion_fr` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text,
+  `id_promotion` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `promotion_fr_promotion_id_fk` (`id_promotion`),
+  CONSTRAINT `promotion_fr_promotion_id_fk` FOREIGN KEY (`id_promotion`) REFERENCES `promotion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promotion_fr`
+--
+
+LOCK TABLES `promotion_fr` WRITE;
+/*!40000 ALTER TABLE `promotion_fr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promotion_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -359,4 +887,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-02  5:03:49
+-- Dump completed on 2021-01-03  7:04:12

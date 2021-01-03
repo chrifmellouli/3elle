@@ -4,7 +4,7 @@
 /**
  * Class Gift
  */
-class Gift implements PromotionAct
+class Gift
 {
     /**
      * @var int
@@ -56,14 +56,6 @@ class Gift implements PromotionAct
     public function setIdPromotionAct(int $id_promotion_act): void
     {
         $this->_id_promotion_act = $id_promotion_act;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    function rewarding(): void
-    {
-        // TODO: Implement rewarding() method.
     }
 
     /**

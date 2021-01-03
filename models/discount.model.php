@@ -4,7 +4,7 @@
 /**
  * Class Discount
  */
-class Discount implements PromotionAct
+class Discount
 {
     /**
      * @var int
@@ -65,14 +65,6 @@ class Discount implements PromotionAct
     }
 
     /**
-     * @inheritDoc
-     */
-    function rewarding(): void
-    {
-        // TODO: Implement rewarding() method.
-    }
-
-    /**
      * @return int
      */
     public function getIdActPromotion(): int
@@ -86,14 +78,6 @@ class Discount implements PromotionAct
     public function setIdActPromotion(int $id_act_promotion): void
     {
         $this->_id_act_promotion = $id_act_promotion;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br>Discount<br> id : <br>" . $this->getId() . "<br> value :" . $this->getValue() . "<br> promotion act : " . $this->getIdActPromotion() . "<br>------<br>";
     }
 
 }

@@ -190,13 +190,4 @@ class User
         $this->_is_connected = $is_connected;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>------<br>User<br> id : " . $this->getId() . "<br> user name : " . $this->getUserName() . "<br> password : " . "à/&=)à" . $this->getPassword()[strlen($this->getPassword()) - 1] . "&/&/é*" . "<br> name : " . $this->getName() . "<br> last name : " . $this->getLastName() . "<br> position : " . $this->getPosition() . "<br> enable : " . $this->isEnabled() . "<br> is connected : " . $this->isIsConnected() . "<br>------<br>";
-    }
-
-
 }

@@ -81,13 +81,4 @@ class Authorization
         $this->_permission = $permission;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return '<br>------<br>Authorization<br> user : ' . $this->getIdUser() . '<br> privilege : ' . $this->getIdPrivilege() . '<br> permission : ' . $this->isPermission() . '<br>------<br>';
-    }
-
-
 }

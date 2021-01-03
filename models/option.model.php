@@ -2,9 +2,9 @@
 
 
 /**
- * Class PromotionAct
+ * Class Option
  */
-class PromotionAct
+class Option
 {
     /**
      * @var int
@@ -12,12 +12,12 @@ class PromotionAct
     private int $_id;
 
     /**
-     * PromotionAct constructor.
+     * Option constructor.
      * @param int $_id
      */
     public function __construct(int $_id)
     {
-        $this->setId($_id);
+        $this->_id = $_id;
     }
 
     /**

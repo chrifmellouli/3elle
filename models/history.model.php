@@ -101,12 +101,4 @@ class History
         $this->_id_user = $id_user;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return '<br>------<br>History<br> id : ' . $this->getId() . '<br> date : ' . $this->getDate()->format('Y-m-d H:i:s') . '<br> note : ' . $this->getNote() . '<br> user : ' . $this->getIdUser() . '<br>------<br>';
-    }
-
 }
