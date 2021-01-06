@@ -27,9 +27,9 @@ class OptionValueAr
      */
     public function __construct(int $_id, string $_value, int $_id_option_value)
     {
-        $this->_id = $_id;
-        $this->_value = $_value;
-        $this->_id_option_value = $_id_option_value;
+        $this->setId($_id);
+        $this->setValue($_value);
+        $this->setIdOptionValue($_id_option_value);
     }
 
     /**

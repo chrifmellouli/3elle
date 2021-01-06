@@ -27,9 +27,9 @@ class OptionAr
      */
     public function __construct(int $_id, string $_designation, int $_id_option)
     {
-        $this->_id = $_id;
-        $this->_designation = $_designation;
-        $this->_id_option = $_id_option;
+        $this->setId($_id);
+        $this->setDesignation($_designation);
+        $this->setIdOption($_id_option);
     }
 
     /**

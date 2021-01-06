@@ -29,10 +29,10 @@ class PromotionFr
      */
     public function __construct(int $_id, string $_title, string $_description, int $_id_promotion)
     {
-        $this->_id = $_id;
-        $this->_title = $_title;
-        $this->_description = $_description;
-        $this->_id_promotion = $_id_promotion;
+        $this->setId($_id);
+        $this->setTitle($_title);
+        $this->setDescription($_description);
+        $this->setIdPromotion($_id_promotion);
     }
 
     /**

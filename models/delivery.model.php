@@ -2,28 +2,28 @@
 
 
 /**
- * Class Post
+ * Class Delivery
  */
-class Post
+class Delivery
 {
     /**
      * @var int
      */
     private int $_id;
     /**
-     * @var string
+     * @var int
      */
-    private string $_code;
+    private int $_price;
 
     /**
-     * Post constructor.
+     * Delivery constructor.
      * @param int $_id
-     * @param string $_code
+     * @param int $_price
      */
-    public function __construct(int $_id, string $_code)
+    public function __construct(int $_id, int $_price)
     {
         $this->setId($_id);
-        $this->setCode($_code);
+        $this->setPrice($_price);
     }
 
     /**
@@ -43,19 +43,19 @@ class Post
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getCode(): string
+    public function getPrice(): int
     {
-        return $this->_code;
+        return $this->_price;
     }
 
     /**
-     * @param string $code
+     * @param int $price
      */
-    public function setCode(string $code): void
+    public function setPrice(int $price): void
     {
-        $this->_code = $code;
+        $this->_price = $price;
     }
 
 }

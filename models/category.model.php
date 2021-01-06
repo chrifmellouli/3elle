@@ -22,8 +22,8 @@ class Category
      */
     public function __construct(int $_id, string $_code)
     {
-        $this->_id = $_id;
-        $this->_code = $_code;
+        $this->setId($_id);
+        $this->setCode($_code);
     }
 
     /**

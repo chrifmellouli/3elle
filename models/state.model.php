@@ -2,9 +2,9 @@
 
 
 /**
- * Class Post
+ * Class State
  */
-class Post
+class State
 {
     /**
      * @var int
@@ -13,17 +13,17 @@ class Post
     /**
      * @var string
      */
-    private string $_code;
+    private string $_description;
 
     /**
-     * Post constructor.
+     * State constructor.
      * @param int $_id
-     * @param string $_code
+     * @param string $_description
      */
-    public function __construct(int $_id, string $_code)
+    public function __construct(int $_id, string $_description)
     {
         $this->setId($_id);
-        $this->setCode($_code);
+        $this->setDescription($_description);
     }
 
     /**
@@ -45,17 +45,17 @@ class Post
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getDescription(): string
     {
-        return $this->_code;
+        return $this->_description;
     }
 
     /**
-     * @param string $code
+     * @param string $description
      */
-    public function setCode(string $code): void
+    public function setDescription(string $description): void
     {
-        $this->_code = $code;
+        $this->_description = $description;
     }
 
 }

@@ -27,9 +27,9 @@ class OptionValue
      */
     public function __construct(int $_id, int $_id_option, int $_id_product)
     {
-        $this->_id = $_id;
-        $this->_id_option = $_id_option;
-        $this->_id_product = $_id_product;
+        $this->setId($_id);
+        $this->setIdOption($_id_option);
+        $this->setIdProduct($_id_product);
     }
 
     /**

@@ -27,9 +27,9 @@ class CategoryFr
      */
     public function __construct(int $_id, string $_designation, int $_id_category)
     {
-        $this->_id = $_id;
-        $this->_designation = $_designation;
-        $this->_id_category = $_id_category;
+        $this->setId($_id);
+        $this->setDesignation($_designation);
+        $this->setIdCategory($_id_category);
     }
 
     /**

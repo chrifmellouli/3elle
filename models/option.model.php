@@ -17,7 +17,7 @@ class Option
      */
     public function __construct(int $_id)
     {
-        $this->_id = $_id;
+        $this->setId($_id);
     }
 
     /**

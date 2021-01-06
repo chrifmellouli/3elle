@@ -4,7 +4,7 @@
 /**
  * Class ProductGift
  */
-class ProductGift
+class PromotedGift
 {
     /**
      * @var int

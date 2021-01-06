@@ -34,11 +34,11 @@ class Promotion
      */
     public function __construct(int $_id, DateTime $_start_date, DateTime $_end_date, int $_id_act_promotion, int $_id_post)
     {
-        $this->_id = $_id;
-        $this->_start_date = $_start_date;
-        $this->_end_date = $_end_date;
-        $this->_id_act_promotion = $_id_act_promotion;
-        $this->_id_post = $_id_post;
+        $this->setId($_id);
+        $this->setStartDate($_start_date);
+        $this->setEndDate($_end_date);
+        $this->setIdActPromotion($_id_act_promotion);
+        $this->setIdPost($_id_post);
     }
 
     /**
