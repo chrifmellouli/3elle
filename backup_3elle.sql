@@ -43,6 +43,28 @@ LOCK TABLES `authorization` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `back_list`
+--
+
+DROP TABLE IF EXISTS `back_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `back_list` (
+  `phone` varchar(50) NOT NULL,
+  PRIMARY KEY (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `back_list`
+--
+
+LOCK TABLES `back_list` WRITE;
+/*!40000 ALTER TABLE `back_list` DISABLE KEYS */;
+/*!40000 ALTER TABLE `back_list` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -116,6 +138,59 @@ CREATE TABLE `category_fr` (
 LOCK TABLES `category_fr` WRITE;
 /*!40000 ALTER TABLE `category_fr` DISABLE KEYS */;
 /*!40000 ALTER TABLE `category_fr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `region` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `input_method` tinyint(1) DEFAULT NULL,
+  `date_submit` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delivery`
+--
+
+DROP TABLE IF EXISTS `delivery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `delivery` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `price` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delivery`
+--
+
+LOCK TABLES `delivery` WRITE;
+/*!40000 ALTER TABLE `delivery` DISABLE KEYS */;
+/*!40000 ALTER TABLE `delivery` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -387,7 +462,10 @@ DROP TABLE IF EXISTS `multimedia`;
 CREATE TABLE `multimedia` (
   `id` int NOT NULL AUTO_INCREMENT,
   `file` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id_post` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `multimedia_post_id_fk` (`id_post`),
+  CONSTRAINT `multimedia_post_id_fk` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -555,6 +633,64 @@ LOCK TABLES `option_value_fr` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `id_delivery` int NOT NULL,
+  `id_customer` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_code_uindex` (`code`),
+  KEY `order_customer_id_fk` (`id_customer`),
+  KEY `order_delivery_id_fk` (`id_delivery`),
+  CONSTRAINT `order_customer_id_fk` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_delivery_id_fk` FOREIGN KEY (`id_delivery`) REFERENCES `delivery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_line`
+--
+
+DROP TABLE IF EXISTS `order_line`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_line` (
+  `id_order` int NOT NULL,
+  `id_product` int NOT NULL,
+  `quantity` int DEFAULT NULL,
+  PRIMARY KEY (`id_order`,`id_product`),
+  KEY `order_line_product_id_fk` (`id_product`),
+  CONSTRAINT `order_line_order_id_fk` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_line_product_id_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_line`
+--
+
+LOCK TABLES `order_line` WRITE;
+/*!40000 ALTER TABLE `order_line` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_line` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `post`
 --
 
@@ -564,11 +700,8 @@ DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
   `id` int NOT NULL AUTO_INCREMENT,
   `code` varchar(50) DEFAULT NULL,
-  `id_multimedia` int NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `post_code_uindex` (`code`),
-  KEY `post_multimedia_id_fk` (`id_multimedia`),
-  CONSTRAINT `post_multimedia_id_fk` FOREIGN KEY (`id_multimedia`) REFERENCES `multimedia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `post_code_uindex` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -849,6 +982,120 @@ LOCK TABLES `promotion_fr` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `state`
+--
+
+DROP TABLE IF EXISTS `state`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `state` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `designation` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `state`
+--
+
+LOCK TABLES `state` WRITE;
+/*!40000 ALTER TABLE `state` DISABLE KEYS */;
+/*!40000 ALTER TABLE `state` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `step`
+--
+
+DROP TABLE IF EXISTS `step`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `step` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_order` int NOT NULL,
+  `id_state` int NOT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `step_order_id_fk` (`id_order`),
+  KEY `step_state_id_fk` (`id_state`),
+  CONSTRAINT `step_order_id_fk` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `step_state_id_fk` FOREIGN KEY (`id_state`) REFERENCES `state` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `step`
+--
+
+LOCK TABLES `step` WRITE;
+/*!40000 ALTER TABLE `step` DISABLE KEYS */;
+/*!40000 ALTER TABLE `step` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `supplier`
+--
+
+DROP TABLE IF EXISTS `supplier`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `supplier` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `region` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `note` text,
+  `user_name` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `conn` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `supplier`
+--
+
+LOCK TABLES `supplier` WRITE;
+/*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+/*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `supply`
+--
+
+DROP TABLE IF EXISTS `supply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `supply` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_supplier` int NOT NULL,
+  `id_product` int NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `bying_price` float DEFAULT NULL,
+  `date_supply` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `supply_product_id_fk` (`id_product`),
+  KEY `supply_supplier_id_fk` (`id_supplier`),
+  CONSTRAINT `supply_product_id_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `supply_supplier_id_fk` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `supply`
+--
+
+LOCK TABLES `supply` WRITE;
+/*!40000 ALTER TABLE `supply` DISABLE KEYS */;
+/*!40000 ALTER TABLE `supply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -887,4 +1134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-03  7:04:12
+-- Dump completed on 2021-01-06  6:58:25
