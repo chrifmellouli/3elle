@@ -24,11 +24,17 @@ class Step
     private string $_note;
 
     /**
+     * @var DateTime
+     */
+    private DateTime $_date;
+
+    /**
      * Step constructor.
      * @param int $_id
      * @param int $_id_order
      * @param int $_id_state
      * @param string $_note
+     * @param DateTime $_date
      */
     public function __construct(int $_id, int $_id_order, int $_id_state, string $_note)
     {
@@ -36,6 +42,7 @@ class Step
         $this->setIdOrder($_id_order);
         $this->setIdState($_id_state);
         $this->setNote($_note);
+        $this->setDate(new DateTime('now'));
     }
 
     /**
@@ -100,6 +107,22 @@ class Step
     public function setNote(string $note): void
     {
         $this->_note = $note;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate(): DateTime
+    {
+        return $this->_date;
+    }
+
+    /**
+     * @param DateTime $date
+     */
+    public function setDate(DateTime $date): void
+    {
+        $this->_date = $date;
     }
 
 }

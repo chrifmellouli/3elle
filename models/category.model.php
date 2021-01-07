@@ -19,6 +19,7 @@ class Category
      * Category constructor.
      * @param int $_id
      * @param String $_code
+     * @throws Exception
      */
     public function __construct(int $_id, string $_code)
     {
@@ -36,10 +37,15 @@ class Category
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,10 +58,15 @@ class Category
 
     /**
      * @param String $code
+     * @throws Exception
      */
     public function setCode(string $code): void
     {
-        $this->_code = $code;
+        if ((strcmp(gettype($code), 'string') == 0) && (strlen($code) >= 4) && (strlen($code) <= 8)) {
+            $this->_code = $code;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

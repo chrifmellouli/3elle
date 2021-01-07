@@ -2,38 +2,39 @@
 
 
 /**
- * Class History
+ * Class CustomerObservable
  */
-class History
+class CustomerObservable
 {
     /**
      * @var int
      */
     private int $_id;
     /**
-     * @var DateTime
+     * @var string
      */
-    private DateTime $_date;
+    private string $_note;
     /**
      * @var int
      */
-    private int $_id_user;
+    private int $_id_customer;
     /**
      * @var int
      */
     private int $_id_observable;
 
     /**
-     * History constructor.
+     * CustomerObservable constructor.
      * @param int $_id
-     * @param int $_id_user
+     * @param string $_note
+     * @param int $_id_customer
      * @param int $_id_observable
      */
-    public function __construct(int $_id, int $_id_user, int $_id_observable)
+    public function __construct(int $_id, string $_note, int $_id_customer, int $_id_observable)
     {
         $this->setId($_id);
-        $this->setDate(new DateTime('now'));
-        $this->setIdUser($_id_user);
+        $this->setNote($_note);
+        $this->setIdCustomer($_id_customer);
         $this->setIdObservable($_id_observable);
     }
 
@@ -54,35 +55,35 @@ class History
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getDate(): DateTime
+    public function getNote(): string
     {
-        return $this->_date;
+        return $this->_note;
     }
 
     /**
-     * @param DateTime $date
+     * @param string $note
      */
-    private function setDate(DateTime $date): void
+    public function setNote(string $note): void
     {
-        $this->_date = $date;
+        $this->_note = $note;
     }
 
     /**
      * @return int
      */
-    public function getIdUser(): int
+    public function getIdCustomer(): int
     {
-        return $this->_id_user;
+        return $this->_id_customer;
     }
 
     /**
-     * @param int $id_user
+     * @param int $id_customer
      */
-    public function setIdUser(int $id_user): void
+    public function setIdCustomer(int $id_customer): void
     {
-        $this->_id_user = $id_user;
+        $this->_id_customer = $id_customer;
     }
 
     /**

@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `back_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `back_list` (
-  `phone` varchar(50) NOT NULL,
+  `phone` varchar(8) NOT NULL,
   PRIMARY KEY (`phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `category`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `code` varchar(50) DEFAULT NULL,
+  `code` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category_code_uindex` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -152,8 +152,8 @@ CREATE TABLE `customer` (
   `name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `region` varchar(50) DEFAULT NULL,
-  `phone` varchar(50) DEFAULT NULL,
+  `region` varchar(15) DEFAULT NULL,
+  `phone` varchar(8) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `input_method` tinyint(1) DEFAULT NULL,
   `date_submit` datetime DEFAULT NULL,
@@ -168,6 +168,35 @@ CREATE TABLE `customer` (
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_observable`
+--
+
+DROP TABLE IF EXISTS `customer_observable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer_observable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `note` varchar(255) DEFAULT NULL,
+  `id_observable` int NOT NULL,
+  `id_customer` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `customer_observable_customer_id_fk` (`id_customer`),
+  KEY `customer_observable_observable_id_fk` (`id_observable`),
+  CONSTRAINT `customer_observable_customer_id_fk` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `customer_observable_observable_id_fk` FOREIGN KEY (`id_observable`) REFERENCES `observable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_observable`
+--
+
+LOCK TABLES `customer_observable` WRITE;
+/*!40000 ALTER TABLE `customer_observable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_observable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -435,10 +464,12 @@ DROP TABLE IF EXISTS `history`;
 CREATE TABLE `history` (
   `id` int NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
   `id_user` int NOT NULL,
+  `id_observable` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `history_user_id_fk` (`id_user`),
+  KEY `history_observable_id_fk` (`id_observable`),
+  CONSTRAINT `history_observable_id_fk` FOREIGN KEY (`id_observable`) REFERENCES `observable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `history_user_id_fk` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -461,7 +492,7 @@ DROP TABLE IF EXISTS `multimedia`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `multimedia` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `file` varchar(255) DEFAULT NULL,
+  `file` varchar(100) DEFAULT NULL,
   `id_post` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `multimedia_post_id_fk` (`id_post`),
@@ -476,6 +507,28 @@ CREATE TABLE `multimedia` (
 LOCK TABLES `multimedia` WRITE;
 /*!40000 ALTER TABLE `multimedia` DISABLE KEYS */;
 /*!40000 ALTER TABLE `multimedia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `observable`
+--
+
+DROP TABLE IF EXISTS `observable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `observable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `observable`
+--
+
+LOCK TABLES `observable` WRITE;
+/*!40000 ALTER TABLE `observable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `observable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -509,7 +562,7 @@ DROP TABLE IF EXISTS `option_ar`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `option_ar` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` varchar(255) DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
   `id_option` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `option_ar_option_id_fk` (`id_option`),
@@ -535,7 +588,7 @@ DROP TABLE IF EXISTS `option_fr`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `option_fr` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` varchar(255) DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
   `id_option` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `option_fr_option_id_fk` (`id_option`),
@@ -715,6 +768,35 @@ LOCK TABLES `post` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `post_observable`
+--
+
+DROP TABLE IF EXISTS `post_observable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `post_observable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `note` varchar(255) DEFAULT NULL,
+  `id_observable` int NOT NULL,
+  `id_post` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_observable_observable_id_fk` (`id_observable`),
+  KEY `post_observable_post_id_fk` (`id_post`),
+  CONSTRAINT `post_observable_observable_id_fk` FOREIGN KEY (`id_observable`) REFERENCES `observable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `post_observable_post_id_fk` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post_observable`
+--
+
+LOCK TABLES `post_observable` WRITE;
+/*!40000 ALTER TABLE `post_observable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `post_observable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `privilege`
 --
 
@@ -777,7 +859,7 @@ DROP TABLE IF EXISTS `product_ar`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_ar` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` varchar(255) DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
   `description` text,
   `id_product` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -804,7 +886,7 @@ DROP TABLE IF EXISTS `product_fr`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_fr` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `designation` varchar(255) DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
   `description` text,
   `id_product` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -936,7 +1018,7 @@ DROP TABLE IF EXISTS `promotion_ar`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promotion_ar` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
   `description` text,
   `id_promotion` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -963,7 +1045,7 @@ DROP TABLE IF EXISTS `promotion_fr`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promotion_fr` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
   `description` text,
   `id_promotion` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -1016,6 +1098,7 @@ CREATE TABLE `step` (
   `id_order` int NOT NULL,
   `id_state` int NOT NULL,
   `note` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `step_order_id_fk` (`id_order`),
   KEY `step_state_id_fk` (`id_state`),
@@ -1034,6 +1117,35 @@ LOCK TABLES `step` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `step_observable`
+--
+
+DROP TABLE IF EXISTS `step_observable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `step_observable` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `note` varchar(255) DEFAULT NULL,
+  `id_observable` int NOT NULL,
+  `id_step` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `step_observable_observable_id_fk` (`id_observable`),
+  KEY `step_observable_step_id_fk` (`id_step`),
+  CONSTRAINT `step_observable_observable_id_fk` FOREIGN KEY (`id_observable`) REFERENCES `observable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `step_observable_step_id_fk` FOREIGN KEY (`id_step`) REFERENCES `step` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `step_observable`
+--
+
+LOCK TABLES `step_observable` WRITE;
+/*!40000 ALTER TABLE `step_observable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `step_observable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `supplier`
 --
 
@@ -1043,13 +1155,13 @@ DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
-  `phone` varchar(50) DEFAULT NULL,
+  `phone` varchar(8) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `region` varchar(50) DEFAULT NULL,
+  `region` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `note` text,
-  `user_name` varchar(50) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `user_name` varchar(10) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
   `conn` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1104,7 +1216,7 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(50) DEFAULT NULL,
+  `user_name` varchar(10) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
@@ -1121,7 +1233,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'mellouliuser','pwwdj','chrif','mellouli','developer',1,0),(2,'chourauser','lsk','heni','choura','manager',1,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1134,4 +1245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-06  6:58:25
+-- Dump completed on 2021-01-07  8:33:53

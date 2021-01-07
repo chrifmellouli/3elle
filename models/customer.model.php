@@ -1,10 +1,10 @@
 <?php
-
+require 'models/Utilities.php';
 
 /**
  * Class Customer
  */
-class Customer
+class Customer extends Utilities
 {
     /**
      * @var int
@@ -14,6 +14,10 @@ class Customer
      * @var string
      */
     private string $_name;
+    /**
+     * @var string
+     */
+    private string $_last_name;
     /**
      * @var string
      */
@@ -31,28 +35,32 @@ class Customer
      */
     private string $_email;
     /**
-     * @var string
+     * @var bool
      */
-    private string $_input_method;
+    private bool $_input_method;
     /**
-     * @var string
+     * @var DateTime
      */
-    private string $_date_submit;
+    private DateTime $_date_submit;
 
     /**
      * Customer constructor.
      * @param int $_id
      * @param string $_name
+     * @param string $_last_name
      * @param string $_address
      * @param string $_region
      * @param string $_phone
      * @param string $_email
-     * @param string $_input_method
+     * @param bool $_input_method
+     * @throws Exception
      */
-    public function __construct(int $_id, string $_name, string $_address, string $_region, string $_phone, string $_email, string $_input_method)
+    public function __construct(int $_id, string $_name, string $_last_name, string $_address, string $_region, string $_phone, string $_email, bool $_input_method)
     {
+        parent::__construct();
         $this->setId($_id);
         $this->setName($_name);
+        $this->setLastName($_last_name);
         $this->setAddress($_address);
         $this->setRegion($_region);
         $this->setPhone($_phone);
@@ -71,10 +79,15 @@ class Customer
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -87,10 +100,36 @@ class Customer
 
     /**
      * @param string $name
+     * @throws Exception
      */
     public function setName(string $name): void
     {
-        $this->_name = $name;
+        if ((strcmp(gettype($name), 'string') == 0) && (strlen($name) >= 3) && (strlen($name) <= 50)) {
+            $this->_name = $name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->_last_name;
+    }
+
+    /**
+     * @param string $last_name
+     * @throws Exception
+     */
+    public function setLastName(string $last_name): void
+    {
+        if ((strcmp(gettype($last_name), 'string') == 0) && (strlen($last_name) >= 3) && (strlen($last_name) <= 50)) {
+            $this->_last_name = $last_name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -103,10 +142,15 @@ class Customer
 
     /**
      * @param string $address
+     * @throws Exception
      */
     public function setAddress(string $address): void
     {
-        $this->_address = $address;
+        if ((strcmp(gettype($address), 'string') == 0) && (strlen($address) >= 3) && (strlen($address) <= 254)) {
+            $this->_address = $address;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -119,10 +163,15 @@ class Customer
 
     /**
      * @param string $region
+     * @throws Exception
      */
     public function setRegion(string $region): void
     {
-        $this->_region = $region;
+        if ((strcmp(gettype($region), 'string') == 0) && (strlen($region) >= 1) && (strlen($region) <= 15)) {
+            $this->_region = $region;
+        } else {
+            throw new Exception('Unexceped value for this field');
+        }
     }
 
     /**
@@ -135,10 +184,15 @@ class Customer
 
     /**
      * @param string $phone
+     * @throws Exception
      */
     public function setPhone(string $phone): void
     {
-        $this->_phone = $phone;
+        if ((strcmp(gettype($phone), 'string') == 0) && (strlen($phone) == 8) && is_numeric($phone)) {
+            $this->_phone = $phone;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -151,42 +205,57 @@ class Customer
 
     /**
      * @param string $email
+     * @throws Exception
      */
     public function setEmail(string $email): void
     {
-        $this->_email = $email;
+        if ((strcmp(gettype($email), 'string') == 0) && (strlen($email) >= 10) && (strlen($email) <= 50)) {
+            $this->_email = $email;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getInputMethod(): string
+    public function isInputMethod(): bool
     {
         return $this->_input_method;
     }
 
     /**
-     * @param string $input_method
+     * @param bool $input_method
+     * @throws Exception
      */
-    public function setInputMethod(string $input_method): void
+    public function setInputMethod(bool $input_method): void
     {
-        $this->_input_method = $input_method;
+        if (strcmp(gettype($input_method), 'boolean') == 0) {
+            $this->_input_method = $input_method;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getDateSubmit(): string
+    public function getDateSubmit(): DateTime
     {
         return $this->_date_submit;
     }
 
     /**
-     * @param string $date_submit
+     * @param DateTime $date_submit
+     * @throws Exception
      */
-    public function setDateSubmit(string $date_submit): void
+    public function setDateSubmit(DateTime $date_submit): void
     {
-        $this->_date_submit = $date_submit;
+        if ($this->validateDate($date_submit->format('Y-m-d H:i:s'))) {
+            $this->_date_submit = $date_submit;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

@@ -24,6 +24,7 @@ class CategoryFr
      * @param int $_id
      * @param string $_designation
      * @param int $_id_category
+     * @throws Exception
      */
     public function __construct(int $_id, string $_designation, int $_id_category)
     {
@@ -42,10 +43,15 @@ class CategoryFr
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +64,15 @@ class CategoryFr
 
     /**
      * @param string $designation
+     * @throws Exception
      */
     public function setDesignation(string $designation): void
     {
-        $this->_designation = $designation;
+        if ((strcmp(gettype($designation), 'string') == 0) && (strlen($designation) >= 2) && (strlen($designation) <= 50)) {
+            $this->_designation = $designation;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +85,14 @@ class CategoryFr
 
     /**
      * @param int $id_category
+     * @throws Exception
      */
     public function setIdCategory(int $id_category): void
     {
-        $this->_id_category = $id_category;
+        if (strcmp(gettype($id_category), 'integer') == 0) {
+            $this->_id_category = $id_category;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
-
 }

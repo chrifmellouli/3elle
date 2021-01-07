@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.SCHEMA:3elle</OriginalElement>
+  <nodes>
+    <node x="2316.0536036036037" y="666.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_ar</node>
+    <node x="733.0536036036035" y="96.5">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_act</node>
+    <node x="-176.39910875922567" y="108.84821055563302">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.user</node>
+    <node x="3618.5536036036037" y="666.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.step</node>
+    <node x="1205.0" y="666.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_fr</node>
+    <node x="3023.5536036036037" y="393.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category_fr</node>
+    <node x="0.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift_on_product</node>
+    <node x="1654.0536036036035" y="393.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.multimedia</node>
+    <node x="1664.3759974259974" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_ar</node>
+    <node x="2163.0536036036037" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value</node>
+    <node x="113.0536036036035" y="405.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift</node>
+    <node x="3576.0536036036037" y="84.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.delivery</node>
+    <node x="2049.5536036036037" y="869.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value_fr</node>
+    <node x="-394.3991087592256" y="180.84821055563302">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.privilege</node>
+    <node x="507.8036036036035" y="393.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount</node>
+    <node x="3405.0536036036037" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order_line</node>
+    <node x="195.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.git_on_order</node>
+    <node x="2542.0536036036037" y="666.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_fr</node>
+    <node x="590.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount_on_order</node>
+    <node x="1652.5536036036035" y="84.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post</node>
+    <node x="1379.0" y="666.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_ar</node>
+    <node x="1498.0536036036035" y="393.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promoted_gift</node>
+    <node x="985.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery_product</node>
+    <node x="2811.5536036036037" y="309.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.supplier</node>
+    <node x="3636.5536036036037" y="405.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.state</node>
+    <node x="1820.0536036036035" y="405.5">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_promoted</node>
+    <node x="1300.0536036036035" y="369.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion</node>
+    <node x="-108.14910875922567" y="383.848210555633">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.history</node>
+    <node x="386.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount_on_product</node>
+    <node x="3052.0536036036037" y="84.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category</node>
+    <node x="3355.0536036036037" y="0.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.customer</node>
+    <node x="2768.0536036036037" y="642.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.supply</node>
+    <node x="3249.5536036036037" y="393.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category_ar</node>
+    <node x="2000.0536036036035" y="417.5">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option</node>
+    <node x="3467.5536036036037" y="369.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order</node>
+    <node x="3265.741157220443" y="510.83191756022836">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.back_list</node>
+    <node x="2239.5536036036037" y="869.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value_ar</node>
+    <node x="1937.0536036036035" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_fr</node>
+    <node x="-339.39910875922567" y="395.848210555633">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.authorization</node>
+    <node x="781.0" y="678.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery_order</node>
+    <node x="2510.389510939511" y="357.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product</node>
+    <node x="908.0536036036035" y="405.0">f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.customer">
+      <point x="-37.25" y="-76.5" />
+      <point x="3504.8036036036037" y="289.0" />
+      <point x="3455.5536036036037" y="289.0" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category_fr" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option">
+      <point x="-33.25" y="-52.5" />
+      <point x="2196.3036036036037" y="622.0" />
+      <point x="2066.7202702702702" y="622.0" />
+      <point x="26.666666666666742" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category_ar" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category">
+      <point x="-1.1368683772161603E-13" y="-52.5" />
+      <point x="3348.5536036036033" y="289.0" />
+      <point x="3176.2202702702702" y="289.0" />
+      <point x="49.66666666666663" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order_line" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order">
+      <point x="33.25" y="-52.5" />
+      <point x="-37.25" y="76.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_act">
+      <point x="0.0" y="-40.5" />
+      <point x="204.0536036036035" y="279.0" />
+      <point x="750.0536036036035" y="279.0" />
+      <point x="-51.0" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.multimedia" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift_on_product" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift">
+      <point x="0.0" y="-52.5" />
+      <point x="87.5" y="622.0" />
+      <point x="158.5536036036035" y="622.0" />
+      <point x="-45.5" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.git_on_order" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.gift">
+      <point x="0.0" y="-52.5" />
+      <point x="280.5" y="622.0" />
+      <point x="249.5536036036035" y="622.0" />
+      <point x="45.5" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount_on_product" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount">
+      <point x="0.0" y="-52.5" />
+      <point x="478.0" y="622.0" />
+      <point x="552.3036036036035" y="622.0" />
+      <point x="-44.5" y="52.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post">
+      <point x="44.5" y="-76.5" />
+      <point x="1433.5536036036035" y="269.0" />
+      <point x="1663.1964607464606" y="269.0" />
+      <point x="-63.85714285714289" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product">
+      <point x="33.25" y="-52.5" />
+      <point x="2262.8036036036037" y="612.0" />
+      <point x="2526.489510939511" y="612.0" />
+      <point x="-64.40000000000009" y="88.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.supply" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product">
+      <point x="-46.5" y="-88.5" />
+      <point x="2814.5536036036037" y="612.0" />
+      <point x="2623.089510939511" y="612.0" />
+      <point x="32.200000000000045" y="88.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value_ar" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value">
+      <point x="0.0" y="-52.5" />
+      <point x="2324.5536036036037" y="844.0" />
+      <point x="2262.8036036036037" y="844.0" />
+      <point x="33.25" y="52.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value_fr" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_value">
+      <point x="0.0" y="-52.5" />
+      <point x="2134.5536036036037" y="844.0" />
+      <point x="2196.3036036036037" y="844.0" />
+      <point x="-33.25" y="52.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.supply" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.supplier">
+      <point x="46.5" y="-88.5" />
+      <point x="0.0" y="136.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_act">
+      <point x="0.0" y="-52.5" />
+      <point x="596.8036036036035" y="289.0" />
+      <point x="784.0536036036035" y="289.0" />
+      <point x="-17.0" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.authorization" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.user">
+      <point x="44.0" y="-52.5" />
+      <point x="-207.39910875922567" y="358.84821055563305" />
+      <point x="-127.64910875922567" y="358.84821055563305" />
+      <point x="-48.75" y="112.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.delivery">
+      <point x="37.25" y="-76.5" />
+      <point x="3579.3036036036037" y="289.0" />
+      <point x="3628.5536036036037" y="289.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.authorization" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.privilege">
+      <point x="-44.0" y="-52.5" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_fr" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.step" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.state">
+      <point x="39.0" y="-64.5" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option_ar" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.option">
+      <point x="0.0" y="-52.5" />
+      <point x="1767.3759974259974" y="622.0" />
+      <point x="2013.3869369369368" y="622.0" />
+      <point x="-26.666666666666742" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery_product" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery">
+      <point x="0.0" y="-52.5" />
+      <point x="1085.0" y="622.0" />
+      <point x="1044.5536036036035" y="622.0" />
+      <point x="45.5" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_fr" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product">
+      <point x="0.0" y="-64.5" />
+      <point x="2645.0536036036037" y="622.0" />
+      <point x="2590.889510939511" y="622.0" />
+      <point x="0.0" y="88.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_promoted" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post">
+      <point x="-40.0" y="-40.0" />
+      <point x="1860.0536036036035" y="289.0" />
+      <point x="1748.3393178893177" y="289.0" />
+      <point x="21.28571428571422" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order_line" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product">
+      <point x="-33.25" y="-52.5" />
+      <point x="3438.3036036036037" y="602.0" />
+      <point x="2655.2895109395113" y="602.0" />
+      <point x="64.40000000000009" y="88.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_ar" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion">
+      <point x="0.0" y="-64.5" />
+      <point x="1456.0" y="622.0" />
+      <point x="1433.5536036036035" y="622.0" />
+      <point x="44.5" y="76.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount_on_order" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.discount">
+      <point x="0.0" y="-52.5" />
+      <point x="675.5" y="622.0" />
+      <point x="641.3036036036035" y="622.0" />
+      <point x="44.5" y="52.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promoted_gift" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post">
+      <point x="-34.0" y="-52.5" />
+      <point x="1532.0536036036035" y="279.0" />
+      <point x="1684.4821750321748" y="279.0" />
+      <point x="-42.57142857142867" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.post">
+      <point x="-40.25" y="-88.5" />
+      <point x="2550.639510939511" y="269.0" />
+      <point x="1790.9107464607464" y="269.0" />
+      <point x="63.85714285714289" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product_ar" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product">
+      <point x="0.0" y="-64.5" />
+      <point x="2419.0536036036037" y="622.0" />
+      <point x="2558.689510939511" y="622.0" />
+      <point x="-32.200000000000045" y="88.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.step" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.order">
+      <point x="-39.0" y="-64.5" />
+      <point x="3657.5536036036037" y="622.0" />
+      <point x="3579.3036036036037" y="622.0" />
+      <point x="37.25" y="76.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_fr" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion">
+      <point x="0.0" y="-64.5" />
+      <point x="1282.0" y="622.0" />
+      <point x="1344.5536036036035" y="622.0" />
+      <point x="-44.5" y="76.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_act">
+      <point x="-44.5" y="-76.5" />
+      <point x="1344.5536036036035" y="279.0" />
+      <point x="852.0536036036035" y="279.0" />
+      <point x="51.0" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.history" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.user">
+      <point x="0.0" y="-64.5" />
+      <point x="48.75" y="112.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.promotion_act">
+      <point x="0.0" y="-40.5" />
+      <point x="999.0536036036035" y="289.0" />
+      <point x="818.0536036036035" y="289.0" />
+      <point x="17.0" y="28.0" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.product" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.category">
+      <point x="40.25" y="-88.5" />
+      <point x="2631.139510939511" y="289.0" />
+      <point x="3076.8869369369368" y="289.0" />
+      <point x="-49.66666666666663" y="40.5" />
+    </edge>
+    <edge source="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery_order" target="f013cd64-5a3d-4ace-a9ac-d5f06f3e8be1.TABLE:3elle.free_delivery">
+      <point x="0.0" y="-52.5" />
+      <point x="873.0" y="622.0" />
+      <point x="953.5536036036035" y="622.0" />
+      <point x="-45.5" y="40.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.39553841916827326" x="998.5964350369027" y="658.5753376966995" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

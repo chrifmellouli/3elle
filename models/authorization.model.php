@@ -24,6 +24,7 @@ class Authorization
      * @param int $_id_user
      * @param int $_id_privilege
      * @param bool $_permission
+     * @throws Exception
      */
     public function __construct(int $_id_user, int $_id_privilege, bool $_permission)
     {
@@ -43,10 +44,15 @@ class Authorization
 
     /**
      * @param int $id_user
+     * @throws Exception
      */
     public function setIdUser(int $id_user): void
     {
-        $this->_id_user = $id_user;
+        if (strcmp(gettype($id_user), 'integer') == 0) {
+            $this->_id_user = $id_user;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -59,10 +65,15 @@ class Authorization
 
     /**
      * @param int $id_privilege
+     * @throws Exception
      */
     public function setIdPrivilege(int $id_privilege): void
     {
-        $this->_id_privilege = $id_privilege;
+        if (strcmp(gettype($id_privilege), 'integer') == 0) {
+            $this->_id_privilege = $id_privilege;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -75,10 +86,15 @@ class Authorization
 
     /**
      * @param bool $permission
+     * @throws Exception
      */
     public function setPermission(bool $permission): void
     {
-        $this->_permission = $permission;
+        if (strcmp(gettype($permission), 'boolean') == 0) {
+            $this->_permission = $permission;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

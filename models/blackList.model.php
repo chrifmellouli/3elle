@@ -14,6 +14,7 @@ class BlackList
     /**
      * BlackList constructor.
      * @param string $_phone
+     * @throws Exception
      */
     public function __construct(string $_phone)
     {
@@ -30,10 +31,16 @@ class BlackList
 
     /**
      * @param string $phone
+     * @throws Exception
      */
     public function setPhone(string $phone): void
     {
-        $this->_phone = $phone;
+        if ((strcmp(gettype($phone), 'string') == 0) && (strlen($phone) == 8) && is_numeric($phone)) {
+            $this->_phone = $phone;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
+
     }
 
 }
