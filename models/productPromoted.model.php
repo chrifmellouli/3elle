@@ -19,6 +19,8 @@ class ProductPromoted
      * ProductPromoted constructor.
      * @param int $id_product
      * @param int $_id_promotion
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $id_product, int $_id_promotion)
     {
@@ -36,10 +38,16 @@ class ProductPromoted
 
     /**
      * @param int $id_product
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdProduct(int $id_product): void
     {
-        $this->id_product = $id_product;
+        if (strcmp(gettype($id_product), 'integer') == 0) {
+            $this->id_product = $id_product;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,10 +60,16 @@ class ProductPromoted
 
     /**
      * @param int $id_promotion
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdPromotion(int $id_promotion): void
     {
-        $this->_id_promotion = $id_promotion;
+        if (strcmp(gettype($id_promotion), 'integer') == 0) {
+            $this->_id_promotion = $id_promotion;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

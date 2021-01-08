@@ -29,13 +29,15 @@ class ProductFr
      * @param string $_designation
      * @param string $_description
      * @param int $_id_product
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, string $_designation, string $_description, int $_id_product)
     {
-        $this->_id = $_id;
-        $this->_designation = $_designation;
-        $this->_description = $_description;
-        $this->_id_product = $_id_product;
+        $this->setId($_id);
+        $this->setDesignation($_designation);
+        $this->setDescription($_description);
+        $this->setIdProduct($_id_product);
     }
 
     /**
@@ -48,10 +50,15 @@ class ProductFr
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -64,10 +71,16 @@ class ProductFr
 
     /**
      * @param string $designation
+     * @throws Exception
+     * @throws Exception
      */
     public function setDesignation(string $designation): void
     {
-        $this->_designation = $designation;
+        if ((strcmp(gettype($designation), 'string') == 0) && (strlen($designation) >= 1) && (strlen($designation) <= 50)) {
+            $this->_designation = $designation;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -80,10 +93,16 @@ class ProductFr
 
     /**
      * @param string $description
+     * @throws Exception
+     * @throws Exception
      */
     public function setDescription(string $description): void
     {
-        $this->_description = $description;
+        if ((strcmp(gettype($description), 'string') == 0) && (strlen($description) >= 1)) {
+            $this->_description = $description;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -96,10 +115,16 @@ class ProductFr
 
     /**
      * @param int $id_product
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdProduct(int $id_product): void
     {
-        $this->_id_product = $id_product;
+        if (strcmp(gettype($id_product), 'integer') == 0) {
+            $this->_id_product = $id_product;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

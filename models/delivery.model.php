@@ -19,6 +19,7 @@ class Delivery
      * Delivery constructor.
      * @param int $_id
      * @param int $_price
+     * @throws Exception
      */
     public function __construct(int $_id, int $_price)
     {
@@ -36,10 +37,15 @@ class Delivery
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,10 +58,15 @@ class Delivery
 
     /**
      * @param int $price
+     * @throws Exception
      */
     public function setPrice(int $price): void
     {
-        $this->_price = $price;
+        if ((strcmp(gettype($price), 'double') == 0) && ($price >= 0)) {
+            $this->_price = $price;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

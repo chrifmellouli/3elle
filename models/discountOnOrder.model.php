@@ -24,6 +24,7 @@ class DiscountOnOrder
      * @param int $_id
      * @param float $_amount_order
      * @param int $_id_discount
+     * @throws Exception
      */
     public function __construct(int $_id, float $_amount_order, int $_id_discount)
     {
@@ -42,10 +43,15 @@ class DiscountOnOrder
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +64,15 @@ class DiscountOnOrder
 
     /**
      * @param float $amount_order
+     * @throws Exception
      */
     public function setAmountOrder(float $amount_order): void
     {
-        $this->_amount_order = $amount_order;
+        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order >= 0)) {
+            $this->_amount_order = $amount_order;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +85,15 @@ class DiscountOnOrder
 
     /**
      * @param int $id_discount
+     * @throws Exception
      */
     public function setIdDiscount(int $id_discount): void
     {
-        $this->_id_discount = $id_discount;
+        if (strcmp(gettype($id_discount), 'integer') == 0) {
+            $this->_id_discount = $id_discount;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

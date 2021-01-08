@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 'on');
+include "models/Utilities.model.php";
 include "models/privilege.model.php";
 include "models/user.model.php";
 include "models/history.model.php";
@@ -31,8 +32,12 @@ $stm_user = SPDO::getInstance()->query('SELECT id, user_name, password, name, la
 $users = $stm_user->fetchAll();
 print_r($users);
 echo '<h3>History : </h3>';
-$h = new History(0, 0, 0);
-print_r($h->getDate()->format('Y-m-d h:m:s'));
+try {
+    $h = new History(0, 0, 0);
+    print_r($h->getDate()->format('Y-m-d h:m:s'));
+} catch (Exception $e) {
+    echo '*' . $e->getMessage() . '*';
+}
 echo '<h3>Customer : </h3>';
 try {
     $c = new Customer(0, "chrif", "mellouli", "myaddress", "myregion", "80508250", "email@gmail.com", false);
@@ -40,6 +45,10 @@ try {
 } catch (Exception $e) {
     echo '*' . $e->getMessage() . '*';
 }
+echo '<h3>Year : </h3>';
+echo date("y");
+echo '<h3>Month : </h3>';
+echo date("m");
 ?>
 </body>
 </html>

@@ -29,6 +29,8 @@ class PostObservable
      * @param string $_note
      * @param int $_id_post
      * @param int $_id_observable
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, string $_note, int $_id_post, int $_id_observable)
     {
@@ -48,10 +50,16 @@ class PostObservable
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -64,10 +72,16 @@ class PostObservable
 
     /**
      * @param string $note
+     * @throws Exception
+     * @throws Exception
      */
     public function setNote(string $note): void
     {
-        $this->_note = $note;
+        if ((strcmp(gettype($note), 'string') == 0) && (strlen($note) >= 1) && (strlen($note) <= 100)) {
+            $this->_note = $note;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -80,10 +94,16 @@ class PostObservable
 
     /**
      * @param int $id_post
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdPost(int $id_post): void
     {
-        $this->_id_post = $id_post;
+        if (strcmp(gettype($id_post), 'integer') == 0) {
+            $this->_id_post = $id_post;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -96,10 +116,16 @@ class PostObservable
 
     /**
      * @param int $id_observable
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdObservable(int $id_observable): void
     {
-        $this->_id_observable = $id_observable;
+        if (strcmp(gettype($id_observable), 'integer') == 0) {
+            $this->_id_observable = $id_observable;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

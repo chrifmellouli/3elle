@@ -25,6 +25,7 @@ class FreeDeliveryOrder
      * @param int $_id
      * @param float $_amount_order
      * @param int $_id_free_delivery
+     * @throws Exception
      */
     public function __construct(int $_id, float $_amount_order, int $_id_free_delivery)
     {
@@ -43,10 +44,15 @@ class FreeDeliveryOrder
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -59,10 +65,16 @@ class FreeDeliveryOrder
 
     /**
      * @param float $amount_order
+     * @throws Exception
      */
     public function setAmountOrder(float $amount_order): void
     {
-        $this->_amount_order = $amount_order;
+        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order >= 0)) {
+            $this->_amount_order = $amount_order;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
+
     }
 
     /**
@@ -75,10 +87,15 @@ class FreeDeliveryOrder
 
     /**
      * @param int $id_free_delivery
+     * @throws Exception
      */
     public function setIdFreeDelivery(int $id_free_delivery): void
     {
-        $this->_id_free_delivery = $id_free_delivery;
+        if (strcmp(gettype($id_free_delivery), 'integer') == 0) {
+            $this->_id_free_delivery = $id_free_delivery;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

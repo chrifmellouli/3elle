@@ -29,6 +29,7 @@ class CustomerObservable
      * @param string $_note
      * @param int $_id_customer
      * @param int $_id_observable
+     * @throws Exception
      */
     public function __construct(int $_id, string $_note, int $_id_customer, int $_id_observable)
     {
@@ -48,10 +49,15 @@ class CustomerObservable
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -64,10 +70,15 @@ class CustomerObservable
 
     /**
      * @param string $note
+     * @throws Exception
      */
     public function setNote(string $note): void
     {
-        $this->_note = $note;
+        if ((strcmp(gettype($note), 'string') == 0) && (strlen($note) >= 1) && (strlen($note) <= 100)) {
+            $this->_note = $note;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -80,10 +91,15 @@ class CustomerObservable
 
     /**
      * @param int $id_customer
+     * @throws Exception
      */
     public function setIdCustomer(int $id_customer): void
     {
-        $this->_id_customer = $id_customer;
+        if (strcmp(gettype($id_customer), 'integer') == 0) {
+            $this->_id_customer = $id_customer;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -96,10 +112,15 @@ class CustomerObservable
 
     /**
      * @param int $id_observable
+     * @throws Exception
      */
     public function setIdObservable(int $id_observable): void
     {
-        $this->_id_observable = $id_observable;
+        if (strcmp(gettype($id_observable), 'integer') == 0) {
+            $this->_id_observable = $id_observable;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

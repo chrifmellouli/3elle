@@ -19,6 +19,8 @@ class Post
      * Post constructor.
      * @param int $_id
      * @param string $_code
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, string $_code)
     {
@@ -36,10 +38,16 @@ class Post
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,10 +60,16 @@ class Post
 
     /**
      * @param string $code
+     * @throws Exception
+     * @throws Exception
      */
     public function setCode(string $code): void
     {
-        $this->_code = $code;
+        if ((strcmp(gettype($code), 'string') == 0) && (strlen($code) >= 4) && (strlen($code) <= 50)) {
+            $this->_code = $code;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

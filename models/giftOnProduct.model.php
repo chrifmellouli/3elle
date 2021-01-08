@@ -25,6 +25,8 @@ class GiftOnProduct
      * @param int $_id
      * @param int $_product_number
      * @param int $_id_gift
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, int $_product_number, int $_id_gift)
     {
@@ -43,10 +45,16 @@ class GiftOnProduct
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -59,10 +67,16 @@ class GiftOnProduct
 
     /**
      * @param int $product_number
+     * @throws Exception
+     * @throws Exception
      */
     public function setProductNumber(int $product_number): void
     {
-        $this->_product_number = $product_number;
+        if ((strcmp(gettype($product_number), 'integer') == 0) && ($product_number > 0)) {
+            $this->_product_number = $product_number;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -75,10 +89,16 @@ class GiftOnProduct
 
     /**
      * @param int $id_gift
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdGift(int $id_gift): void
     {
-        $this->_id_gift = $id_gift;
+        if (strcmp(gettype($id_gift), 'integer') == 0) {
+            $this->_id_gift = $id_gift;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

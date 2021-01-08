@@ -8,6 +8,8 @@ class Observable
     /**
      * Observable constructor.
      * @param int $_id
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id)
     {
@@ -24,10 +26,16 @@ class Observable
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

@@ -1,5 +1,4 @@
 <?php
-require 'models/Utilities.php';
 
 /**
  * Class Customer
@@ -249,7 +248,7 @@ class Customer extends Utilities
      * @param DateTime $date_submit
      * @throws Exception
      */
-    public function setDateSubmit(DateTime $date_submit): void
+    private function setDateSubmit(DateTime $date_submit): void
     {
         if ($this->validateDate($date_submit->format('Y-m-d H:i:s'))) {
             $this->_date_submit = $date_submit;

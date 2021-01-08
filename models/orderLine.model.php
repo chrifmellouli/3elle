@@ -24,6 +24,8 @@ class OrderLine
      * @param int $_id_product
      * @param int $_id_order
      * @param int $_quantity
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id_product, int $_id_order, int $_quantity)
     {
@@ -42,10 +44,16 @@ class OrderLine
 
     /**
      * @param int $id_product
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdProduct(int $id_product): void
     {
-        $this->_id_product = $id_product;
+        if (strcmp(gettype($id_product), 'integer') == 0) {
+            $this->_id_product = $id_product;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +66,16 @@ class OrderLine
 
     /**
      * @param int $id_order
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdOrder(int $id_order): void
     {
-        $this->_id_order = $id_order;
+        if (strcmp(gettype($id_order), 'integer') == 0) {
+            $this->_id_order = $id_order;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +88,16 @@ class OrderLine
 
     /**
      * @param int $quantity
+     * @throws Exception
+     * @throws Exception
      */
     public function setQuantity(int $quantity): void
     {
-        $this->_quantity = $quantity;
+        if ((strcmp(gettype($quantity), 'integer') == 0) && ($quantity > 0)) {
+            $this->_quantity = $quantity;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

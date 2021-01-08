@@ -24,6 +24,8 @@ class OptionValueFr
      * @param int $_id
      * @param string $_value
      * @param int $_id_option_value
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, string $_value, int $_id_option_value)
     {
@@ -42,10 +44,16 @@ class OptionValueFr
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +66,16 @@ class OptionValueFr
 
     /**
      * @param string $value
+     * @throws Exception
+     * @throws Exception
      */
     public function setValue(string $value): void
     {
-        $this->_value = $value;
+        if ((strcmp(gettype($value), 'string') == 0) && (strlen($value) >= 1) && (strlen($value) <= 50)) {
+            $this->_value = $value;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +88,16 @@ class OptionValueFr
 
     /**
      * @param int $id_option_value
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdOptionValue(int $id_option_value): void
     {
-        $this->_id_option_value = $id_option_value;
+        if (strcmp(gettype($id_option_value), 'integer') == 0) {
+            $this->_id_option_value = $id_option_value;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

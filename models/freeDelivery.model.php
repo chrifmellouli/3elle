@@ -19,6 +19,7 @@ class FreeDelivery
      * FreeDelivery constructor.
      * @param int $_id
      * @param int $_id_promoted_act
+     * @throws Exception
      */
     public function __construct(int $_id, int $_id_promoted_act)
     {
@@ -36,10 +37,15 @@ class FreeDelivery
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,10 +58,15 @@ class FreeDelivery
 
     /**
      * @param int $id_promoted_act
+     * @throws Exception
      */
     public function setIdPromotedAct(int $id_promoted_act): void
     {
-        $this->_id_promoted_act = $id_promoted_act;
+        if (strcmp(gettype($id_promoted_act), 'integer') == 0) {
+            $this->_id_promoted_act = $id_promoted_act;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

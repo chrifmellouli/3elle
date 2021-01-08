@@ -24,6 +24,7 @@ class Discount
      * @param int $_id
      * @param float $_value
      * @param $_id_act_promotion
+     * @throws Exception
      */
     public function __construct(int $_id, float $_value, $_id_act_promotion)
     {
@@ -42,10 +43,15 @@ class Discount
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +64,15 @@ class Discount
 
     /**
      * @param float $value
+     * @throws Exception
      */
     public function setValue(float $value): void
     {
-        $this->_value = $value;
+        if ((strcmp(gettype($value), 'double') == 0) && ($value >= 0)) {
+            $this->_value = $value;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +85,15 @@ class Discount
 
     /**
      * @param int $id_act_promotion
+     * @throws Exception
      */
     public function setIdActPromotion(int $id_act_promotion): void
     {
-        $this->_id_act_promotion = $id_act_promotion;
+        if (strcmp(gettype($id_act_promotion), 'integer') == 0) {
+            $this->_id_act_promotion = $id_act_promotion;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

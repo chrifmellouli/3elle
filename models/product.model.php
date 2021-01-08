@@ -39,15 +39,16 @@ class Product
      * @param string $_mark
      * @param int $_id_post
      * @param int $_id_category
+     * @throws Exception
      */
     public function __construct(int $_id, float $_vat, float $_price_ex_vat, string $_mark, int $_id_post, int $_id_category)
     {
-        $this->_id = $_id;
-        $this->_vat = $_vat;
-        $this->_price_ex_vat = $_price_ex_vat;
-        $this->_mark = $_mark;
-        $this->_id_post = $_id_post;
-        $this->_id_category = $_id_category;
+        $this->setId($_id);
+        $this->setVat($_vat);
+        $this->setPriceExVat($_price_ex_vat);
+        $this->setMark($_mark);
+        $this->setIdPost($_id_post);
+        $this->setIdCategory($_id_category);
     }
 
     /**
@@ -60,10 +61,15 @@ class Product
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -76,10 +82,15 @@ class Product
 
     /**
      * @param float $vat
+     * @throws Exception
      */
     public function setVat(float $vat): void
     {
-        $this->_vat = $vat;
+        if ((strcmp(gettype($vat), 'double') == 0) && ($vat >= 0) && ($vat <= 100)) {
+            $this->_vat = $vat;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -92,10 +103,15 @@ class Product
 
     /**
      * @param float $price_ex_vat
+     * @throws Exception
      */
     public function setPriceExVat(float $price_ex_vat): void
     {
-        $this->_price_ex_vat = $price_ex_vat;
+        if ((strcmp(gettype($price_ex_vat), 'double') == 0) && ($price_ex_vat >= 0)) {
+            $this->_price_ex_vat = $price_ex_vat;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -108,10 +124,15 @@ class Product
 
     /**
      * @param string $mark
+     * @throws Exception
      */
     public function setMark(string $mark): void
     {
-        $this->_mark = $mark;
+        if ((strcmp(gettype($mark), 'string') == 0) && (strlen($mark) >= 1) && (strlen($mark) <= 50)) {
+            $this->_mark = $mark;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -124,10 +145,15 @@ class Product
 
     /**
      * @param int $id_post
+     * @throws Exception
      */
     public function setIdPost(int $id_post): void
     {
-        $this->_id_post = $id_post;
+        if (strcmp(gettype($id_post), 'integer') == 0) {
+            $this->_id_post = $id_post;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -140,10 +166,15 @@ class Product
 
     /**
      * @param int $id_category
+     * @throws Exception
      */
     public function setIdCategory(int $id_category): void
     {
-        $this->_id_category = $id_category;
+        if (strcmp(gettype($id_category), 'integer') == 0) {
+            $this->_id_category = $id_category;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

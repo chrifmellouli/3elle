@@ -24,6 +24,8 @@ class PromotedGift
      * @param int $_id_product
      * @param int $_id_promotion
      * @param int $_number
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id_product, int $_id_promotion, int $_number)
     {
@@ -42,10 +44,16 @@ class PromotedGift
 
     /**
      * @param int $id_product
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdProduct(int $id_product): void
     {
-        $this->_id_product = $id_product;
+        if (strcmp(gettype($id_product), 'integer') == 0) {
+            $this->_id_product = $id_product;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -58,10 +66,16 @@ class PromotedGift
 
     /**
      * @param int $id_promotion
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdPromotion(int $id_promotion): void
     {
-        $this->_id_promotion = $id_promotion;
+        if (strcmp(gettype($id_promotion), 'integer') == 0) {
+            $this->_id_promotion = $id_promotion;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -74,10 +88,16 @@ class PromotedGift
 
     /**
      * @param int $number
+     * @throws Exception
+     * @throws Exception
      */
     public function setNumber(int $number): void
     {
-        $this->_number = $number;
+        if ((strcmp(gettype($number), 'integer') == 0) && ($number > 0)) {
+            $this->_number = $number;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

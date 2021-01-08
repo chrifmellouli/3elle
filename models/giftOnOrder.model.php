@@ -25,6 +25,7 @@ class GiftOnOrder
      * @param int $_id
      * @param float $_amount_order
      * @param int $_id_gift
+     * @throws Exception
      */
     public function __construct(int $_id, float $_amount_order, int $_id_gift)
     {
@@ -43,10 +44,15 @@ class GiftOnOrder
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -59,10 +65,16 @@ class GiftOnOrder
 
     /**
      * @param float $amount_order
+     * @throws Exception
+     * @throws Exception
      */
     public function setAmountOrder(float $amount_order): void
     {
-        $this->_amount_order = $amount_order;
+        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order >= 0)) {
+            $this->_amount_order = $amount_order;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -75,11 +87,16 @@ class GiftOnOrder
 
     /**
      * @param int $id_gift
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdGit(int $id_gift): void
     {
-        $this->_id_gift = $id_gift;
+        if (strcmp(gettype($id_gift), 'integer') == 0) {
+            $this->_id_gift = $id_gift;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
-
 
 }

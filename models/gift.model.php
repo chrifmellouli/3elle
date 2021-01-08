@@ -19,6 +19,8 @@ class Gift
      * Gift constructor.
      * @param int $_id
      * @param int $_id_promotion_act
+     * @throws Exception
+     * @throws Exception
      */
     public function __construct(int $_id, int $_id_promotion_act)
     {
@@ -36,10 +38,16 @@ class Gift
 
     /**
      * @param int $id
+     * @throws Exception
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -52,18 +60,16 @@ class Gift
 
     /**
      * @param int $id_promotion_act
+     * @throws Exception
+     * @throws Exception
      */
     public function setIdPromotionAct(int $id_promotion_act): void
     {
-        $this->_id_promotion_act = $id_promotion_act;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return "<br>-------<br> Gift <br> id : " . $this->getId() . "<br> promotion act : " . $this->getIdPromotionAct() . "<br>------<br>";
+        if (strcmp(gettype($id_promotion_act), 'integer') == 0) {
+            $this->_id_promotion_act = $id_promotion_act;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

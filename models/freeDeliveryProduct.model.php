@@ -22,6 +22,7 @@ class FreeDeliveryProduct
      * @param int $_id
      * @param int $_product_number
      * @param int $_id_free_delivery
+     * @throws Exception
      */
     public function __construct(int $_id, int $_product_number, int $_id_free_delivery)
     {
@@ -40,10 +41,15 @@ class FreeDeliveryProduct
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -56,10 +62,15 @@ class FreeDeliveryProduct
 
     /**
      * @param int $product_number
+     * @throws Exception
      */
     public function setProductNumber(int $product_number): void
     {
-        $this->_product_number = $product_number;
+        if ((strcmp(gettype($product_number), 'integer') == 0) && ($product_number > 0)) {
+            $this->_product_number = $product_number;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 
@@ -73,10 +84,15 @@ class FreeDeliveryProduct
 
     /**
      * @param int $id_free_delivery
+     * @throws Exception
      */
     public function setIdFreeDelivery(int $id_free_delivery): void
     {
-        $this->_id_free_delivery = $id_free_delivery;
+        if (strcmp(gettype($id_free_delivery), 'integer') == 0) {
+            $this->_id_free_delivery = $id_free_delivery;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }
