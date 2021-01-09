@@ -20,7 +20,6 @@ class Gift
      * @param int $_id
      * @param int $_id_promotion_act
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, int $_id_promotion_act)
     {
@@ -38,7 +37,6 @@ class Gift
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -60,7 +58,6 @@ class Gift
 
     /**
      * @param int $id_promotion_act
-     * @throws Exception
      * @throws Exception
      */
     public function setIdPromotionAct(int $id_promotion_act): void

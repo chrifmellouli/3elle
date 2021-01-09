@@ -29,6 +29,7 @@ class PromotionAr
      * @param string $_title
      * @param string $_description
      * @param int $_id_promotion
+     * @throws Exception
      */
     public function __construct(int $_id, string $_title, string $_description, int $_id_promotion)
     {
@@ -48,10 +49,15 @@ class PromotionAr
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -64,10 +70,16 @@ class PromotionAr
 
     /**
      * @param string $title
+     * length : 1 .. 254
+     * @throws Exception
      */
     public function setTitle(string $title): void
     {
-        $this->_title = $title;
+        if ((strcmp(gettype($title), 'string') == 0) && (strlen($title) >= 1) && (strlen($title) <= 254)) {
+            $this->_title = $title;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -80,10 +92,16 @@ class PromotionAr
 
     /**
      * @param string $description
+     * length > 1
+     * @throws Exception
      */
     public function setDescription(string $description): void
     {
-        $this->_description = $description;
+        if ((strcmp(gettype($description), 'string') == 0) && (strlen($description) >= 1)) {
+            $this->_description = $description;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -96,10 +114,15 @@ class PromotionAr
 
     /**
      * @param int $id_promotion
+     * @throws Exception
      */
     public function setIdPromotion(int $id_promotion): void
     {
-        $this->_id_promotion = $id_promotion;
+        if (strcmp(gettype($id_promotion), 'integer') == 0) {
+            $this->_id_promotion = $id_promotion;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

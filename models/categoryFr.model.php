@@ -64,6 +64,7 @@ class CategoryFr
 
     /**
      * @param string $designation
+     * length : 2 .. 50
      * @throws Exception
      */
     public function setDesignation(string $designation): void

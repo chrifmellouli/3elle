@@ -65,12 +65,12 @@ class GiftOnOrder
 
     /**
      * @param float $amount_order
-     * @throws Exception
+     * value > 0
      * @throws Exception
      */
     public function setAmountOrder(float $amount_order): void
     {
-        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order >= 0)) {
+        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order > 0)) {
             $this->_amount_order = $amount_order;
         } else {
             throw new Exception('Unexceped value for this filed');
@@ -87,7 +87,6 @@ class GiftOnOrder
 
     /**
      * @param int $id_gift
-     * @throws Exception
      * @throws Exception
      */
     public function setIdGit(int $id_gift): void

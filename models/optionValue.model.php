@@ -25,7 +25,6 @@ class OptionValue
      * @param int $_id_option
      * @param int $_id_product
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, int $_id_option, int $_id_product)
     {
@@ -44,7 +43,6 @@ class OptionValue
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -67,7 +65,6 @@ class OptionValue
     /**
      * @param int $id_option
      * @throws Exception
-     * @throws Exception
      */
     public function setIdOption(int $id_option): void
     {
@@ -88,7 +85,6 @@ class OptionValue
 
     /**
      * @param int $id_product
-     * @throws Exception
      * @throws Exception
      */
     public function setIdProduct(int $id_product): void

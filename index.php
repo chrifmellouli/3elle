@@ -27,7 +27,7 @@ echo '<h6>CONNEXION SUCCESSED</h6>';
 <h6>-----------------------------------</h6>
 <?php
 echo '<h3>User : </h3>';
-$_new_user = new User(0, 'developer', 'pwd&&!!', 'Chrif', 'MELLOULI', 'engineer', true, false);
+$_new_user = new UserDao(0, 'developer', 'pwd&&!!', 'Chrif', 'MELLOULI', 'engineer', true, false);
 $stm_user = SPDO::getInstance()->query('SELECT id, user_name, password, name, last_name, position, enabled, is_connected  FROM user');
 $users = $stm_user->fetchAll();
 print_r($users);
@@ -45,10 +45,17 @@ try {
 } catch (Exception $e) {
     echo '*' . $e->getMessage() . '*';
 }
+try {
+    $p = new Privilege(0, "45");
+    $p->setDesignation("lkj");
+} catch (Exception $e) {
+
+}
 echo '<h3>Year : </h3>';
 echo date("y");
 echo '<h3>Month : </h3>';
 echo date("m");
 ?>
+</button>
 </body>
 </html>

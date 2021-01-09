@@ -30,7 +30,6 @@ class PostObservable
      * @param int $_id_post
      * @param int $_id_observable
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_note, int $_id_post, int $_id_observable)
     {
@@ -50,7 +49,6 @@ class PostObservable
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -72,7 +70,7 @@ class PostObservable
 
     /**
      * @param string $note
-     * @throws Exception
+     * length : 1 .. 100
      * @throws Exception
      */
     public function setNote(string $note): void
@@ -95,7 +93,6 @@ class PostObservable
     /**
      * @param int $id_post
      * @throws Exception
-     * @throws Exception
      */
     public function setIdPost(int $id_post): void
     {
@@ -116,7 +113,6 @@ class PostObservable
 
     /**
      * @param int $id_observable
-     * @throws Exception
      * @throws Exception
      */
     public function setIdObservable(int $id_observable): void

@@ -4,7 +4,7 @@
 /**
  * Class Step
  */
-class Step
+class Step extends Utilities
 {
     /**
      * @var int
@@ -30,14 +30,16 @@ class Step
 
     /**
      * Step constructor.
+     * date is an auto generated field by the constructor at the moment of the step's creation
      * @param int $_id
      * @param int $_id_order
      * @param int $_id_state
      * @param string $_note
-     * @param DateTime $_date
+     * @throws Exception
      */
     public function __construct(int $_id, int $_id_order, int $_id_state, string $_note)
     {
+        parent::__construct();
         $this->setId($_id);
         $this->setIdOrder($_id_order);
         $this->setIdState($_id_state);
@@ -55,10 +57,15 @@ class Step
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -71,10 +78,15 @@ class Step
 
     /**
      * @param int $id_order
+     * @throws Exception
      */
     public function setIdOrder(int $id_order): void
     {
-        $this->_id_order = $id_order;
+        if (strcmp(gettype($id_order), 'integer') == 0) {
+            $this->_id_order = $id_order;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -87,10 +99,15 @@ class Step
 
     /**
      * @param int $id_state
+     * @throws Exception
      */
     public function setIdState(int $id_state): void
     {
-        $this->_id_state = $id_state;
+        if (strcmp(gettype($id_state), 'integer') == 0) {
+            $this->_id_state = $id_state;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -103,10 +120,16 @@ class Step
 
     /**
      * @param string $note
+     * length > 1
+     * @throws Exception
      */
     public function setNote(string $note): void
     {
-        $this->_note = $note;
+        if ((strcmp(gettype($note), 'string') == 0) && (strlen($note) >= 1)) {
+            $this->_note = $note;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -118,11 +141,17 @@ class Step
     }
 
     /**
+     * This is an auto generated field by the constructor at the moment of the step's creation
      * @param DateTime $date
+     * @throws Exception
      */
-    public function setDate(DateTime $date): void
+    private function setDate(DateTime $date): void
     {
-        $this->_date = $date;
+        if ($this->validateDate($date->format('Y-m-d H:i:s'))) {
+            $this->_date = $date;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

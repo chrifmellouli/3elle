@@ -62,6 +62,7 @@ class FreeDeliveryProduct
 
     /**
      * @param int $product_number
+     * value > 0
      * @throws Exception
      */
     public function setProductNumber(int $product_number): void

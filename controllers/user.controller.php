@@ -1,7 +1,7 @@
 <?php
 
 require 'models/user.model.php';
-require 'daoImpl/UserDaoImpl.php';
+require 'daoImpl/UserDaoImpl.impl.php';
 
 /**
  * Class UserController

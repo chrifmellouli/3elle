@@ -34,6 +34,7 @@ class Supply
      * @param int $_id_product
      * @param int $_quantity
      * @param float $_bying_price
+     * @throws Exception
      */
     public function __construct(int $_id, int $_id_supplier, int $_id_product, int $_quantity, float $_bying_price)
     {
@@ -54,10 +55,15 @@ class Supply
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -70,10 +76,15 @@ class Supply
 
     /**
      * @param int $id_supplier
+     * @throws Exception
      */
     public function setIdSupplier(int $id_supplier): void
     {
-        $this->_id_supplier = $id_supplier;
+        if (strcmp(gettype($id_supplier), 'integer') == 0) {
+            $this->_id_supplier = $id_supplier;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -86,10 +97,15 @@ class Supply
 
     /**
      * @param int $id_product
+     * @throws Exception
      */
     public function setIdProduct(int $id_product): void
     {
-        $this->_id_product = $id_product;
+        if (strcmp(gettype($id_product), 'integer') == 0) {
+            $this->_id_product = $id_product;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -102,10 +118,16 @@ class Supply
 
     /**
      * @param int $quantity
+     * value > 0
+     * @throws Exception
      */
     public function setQuantity(int $quantity): void
     {
-        $this->_quantity = $quantity;
+        if ((strcmp(gettype($quantity), 'integer') == 0) && ($quantity > 0)) {
+            $this->_quantity = $quantity;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -118,10 +140,16 @@ class Supply
 
     /**
      * @param float $bying_price
+     * value > 0
+     * @throws Exception
      */
     public function setByingPrice(float $bying_price): void
     {
-        $this->_bying_price = $bying_price;
+        if ((strcmp(gettype($bying_price), 'double') == 0) && ($bying_price > 0)) {
+            $this->_bying_price = $bying_price;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

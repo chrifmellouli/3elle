@@ -99,6 +99,7 @@ class Customer extends Utilities
 
     /**
      * @param string $name
+     * length : 3 .. 50
      * @throws Exception
      */
     public function setName(string $name): void
@@ -120,6 +121,7 @@ class Customer extends Utilities
 
     /**
      * @param string $last_name
+     * length : 3 .. 50
      * @throws Exception
      */
     public function setLastName(string $last_name): void
@@ -141,6 +143,7 @@ class Customer extends Utilities
 
     /**
      * @param string $address
+     * length 3 .. 254
      * @throws Exception
      */
     public function setAddress(string $address): void
@@ -162,6 +165,7 @@ class Customer extends Utilities
 
     /**
      * @param string $region
+     * length : 1 ..15
      * @throws Exception
      */
     public function setRegion(string $region): void
@@ -183,6 +187,7 @@ class Customer extends Utilities
 
     /**
      * @param string $phone
+     * length = 8 and is numeric
      * @throws Exception
      */
     public function setPhone(string $phone): void
@@ -204,6 +209,7 @@ class Customer extends Utilities
 
     /**
      * @param string $email
+     * length : 10 .. 50
      * @throws Exception
      */
     public function setEmail(string $email): void
@@ -246,6 +252,7 @@ class Customer extends Utilities
 
     /**
      * @param DateTime $date_submit
+     * This is an auto generated field by the constructor at the moment of the customer's creation
      * @throws Exception
      */
     private function setDateSubmit(DateTime $date_submit): void

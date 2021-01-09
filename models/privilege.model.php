@@ -20,7 +20,6 @@ class Privilege
      * @param int $_id
      * @param string $_designation
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_designation)
     {
@@ -39,7 +38,6 @@ class Privilege
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -60,8 +58,9 @@ class Privilege
     }
 
     /**
+     * Setting a desgination for a privlege object
      * @param String $designation
-     * @throws Exception
+     * length : 1 .. 50
      * @throws Exception
      */
     public function setDesignation(string $designation): void

@@ -32,7 +32,6 @@ class History extends Utilities
      * @param int $_id_user
      * @param int $_id_observable
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, int $_id_user, int $_id_observable)
     {
@@ -55,7 +54,6 @@ class History extends Utilities
     /**
      * @param int $id
      * @throws Exception
-     * @throws Exception
      */
     public function setId(int $id): void
     {
@@ -76,7 +74,7 @@ class History extends Utilities
 
     /**
      * @param DateTime $date
-     * @throws Exception
+     * This is an auto generated field by the constructor at the moment of the history's creation
      * @throws Exception
      */
     private function setDate(DateTime $date): void
@@ -99,7 +97,6 @@ class History extends Utilities
     /**
      * @param int $id_user
      * @throws Exception
-     * @throws Exception
      */
     public function setIdUser(int $id_user): void
     {
@@ -120,7 +117,6 @@ class History extends Utilities
 
     /**
      * @param int $id_observable
-     * @throws Exception
      * @throws Exception
      */
     public function setIdObservable(int $id_observable): void

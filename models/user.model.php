@@ -49,6 +49,7 @@ class User
      * @param string $_position
      * @param bool $_enabled
      * @param bool $_is_connected
+     * @throws Exception
      */
     public function __construct(int $_id, string $_user_name, string $_password, string $_name, string $_last_name, string $_position, bool $_enabled, bool $_is_connected)
     {
@@ -72,10 +73,15 @@ class User
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -88,10 +94,16 @@ class User
 
     /**
      * @param string $user_name
+     * length : 4 .. 10
+     * @throws Exception
      */
     public function setUserName(string $user_name): void
     {
-        $this->_user_name = $user_name;
+        if ((strcmp(gettype($user_name), 'string') == 0) && (strlen($user_name) >= 4) && (strlen($user_name) <= 10)) {
+            $this->_user_name = $user_name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -104,10 +116,16 @@ class User
 
     /**
      * @param string $password
+     * length : 8 .. 50
+     * @throws Exception
      */
     public function setPassword(string $password): void
     {
-        $this->_password = $password;
+        if ((strcmp(gettype($password), 'string') == 0) && (strlen($password) >= 8) && (strlen($password) <= 50)) {
+            $this->_password = $password;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -120,10 +138,16 @@ class User
 
     /**
      * @param string $name
+     * length : 3 .. 50
+     * @throws Exception
      */
     public function setName(string $name): void
     {
-        $this->_name = $name;
+        if ((strcmp(gettype($name), 'string') == 0) && (strlen($name) >= 3) && (strlen($name) <= 50)) {
+            $this->_name = $name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -136,10 +160,16 @@ class User
 
     /**
      * @param string $last_name
+     * length : 3 .. 50
+     * @throws Exception
      */
     public function setLastName(string $last_name): void
     {
-        $this->_last_name = $last_name;
+        if ((strcmp(gettype($last_name), 'string') == 0) && (strlen($last_name) >= 3) && (strlen($last_name) <= 50)) {
+            $this->_last_name = $last_name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -152,10 +182,16 @@ class User
 
     /**
      * @param string $position
+     * length : 3 .. 50
+     * @throws Exception
      */
     public function setPosition(string $position): void
     {
-        $this->_position = $position;
+        if ((strcmp(gettype($position), 'string') == 0) && (strlen($position) >= 3) && (strlen($position) <= 50)) {
+            $this->_position = $position;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -168,10 +204,15 @@ class User
 
     /**
      * @param bool $enabled
+     * @throws Exception
      */
     public function setEnabled(bool $enabled): void
     {
-        $this->_enabled = $enabled;
+        if (strcmp(gettype($enabled), 'boolean') == 0) {
+            $this->_enabled = $enabled;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -184,10 +225,15 @@ class User
 
     /**
      * @param bool $is_connected
+     * @throws Exception
      */
     public function setIsConnected(bool $is_connected): void
     {
-        $this->_is_connected = $is_connected;
+        if (strcmp(gettype($is_connected), 'boolean') == 0) {
+            $this->_is_connected = $is_connected;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

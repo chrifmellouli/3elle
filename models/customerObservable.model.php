@@ -70,6 +70,7 @@ class CustomerObservable
 
     /**
      * @param string $note
+     * length 1 .. 100
      * @throws Exception
      */
     public function setNote(string $note): void

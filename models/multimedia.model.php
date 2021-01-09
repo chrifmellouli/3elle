@@ -25,7 +25,6 @@ class Multimedia
      * @param string $_file
      * @param int $_id_post
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_file, int $_id_post)
     {
@@ -44,7 +43,6 @@ class Multimedia
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -66,7 +64,7 @@ class Multimedia
 
     /**
      * @param string $file
-     * @throws Exception
+     * length : 5 .. 100
      * @throws Exception
      */
     public function setFile(string $file): void
@@ -88,7 +86,6 @@ class Multimedia
 
     /**
      * @param int $id_post
-     * @throws Exception
      * @throws Exception
      */
     public function setIdPost(int $id_post): void

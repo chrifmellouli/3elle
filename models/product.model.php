@@ -82,6 +82,7 @@ class Product
 
     /**
      * @param float $vat
+     * value : 0 ..100
      * @throws Exception
      */
     public function setVat(float $vat): void
@@ -103,6 +104,7 @@ class Product
 
     /**
      * @param float $price_ex_vat
+     * value >= 0
      * @throws Exception
      */
     public function setPriceExVat(float $price_ex_vat): void
@@ -124,6 +126,7 @@ class Product
 
     /**
      * @param string $mark
+     * length : 1 .. 50
      * @throws Exception
      */
     public function setMark(string $mark): void

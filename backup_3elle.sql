@@ -179,7 +179,7 @@ DROP TABLE IF EXISTS `customer_observable`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer_observable` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `note` varchar(255) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
   `id_observable` int NOT NULL,
   `id_customer` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -466,6 +466,7 @@ CREATE TABLE `history` (
   `date` datetime DEFAULT NULL,
   `id_user` int NOT NULL,
   `id_observable` int NOT NULL,
+  `read` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `history_user_id_fk` (`id_user`),
   KEY `history_observable_id_fk` (`id_observable`),
@@ -776,7 +777,7 @@ DROP TABLE IF EXISTS `post_observable`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `post_observable` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `note` varchar(255) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
   `id_observable` int NOT NULL,
   `id_post` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -912,12 +913,12 @@ DROP TABLE IF EXISTS `product_promoted`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_promoted` (
-  `product` int NOT NULL,
-  `promotion` int NOT NULL,
-  PRIMARY KEY (`product`,`promotion`),
-  KEY `product_promoted___fk2` (`promotion`),
-  CONSTRAINT `product_promoted___fk1` FOREIGN KEY (`product`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `product_promoted___fk2` FOREIGN KEY (`promotion`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `id_product` int NOT NULL,
+  `id_promotion` int NOT NULL,
+  PRIMARY KEY (`id_product`,`id_promotion`),
+  KEY `product_promoted___fk2` (`id_promotion`),
+  CONSTRAINT `product_promoted___fk1` FOREIGN KEY (`id_product`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `product_promoted___fk2` FOREIGN KEY (`id_promotion`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -938,13 +939,13 @@ DROP TABLE IF EXISTS `promoted_gift`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promoted_gift` (
-  `promotion` int NOT NULL,
-  `product` int NOT NULL,
+  `id_promotion` int NOT NULL,
+  `id_product` int NOT NULL,
   `number` int DEFAULT NULL,
-  PRIMARY KEY (`promotion`,`product`),
-  KEY `promoted_gift_post_id_fk_2` (`product`),
-  CONSTRAINT `promoted_gift_post_id_fk_1` FOREIGN KEY (`promotion`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `promoted_gift_post_id_fk_2` FOREIGN KEY (`product`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id_promotion`,`id_product`),
+  KEY `promoted_gift_post_id_fk_2` (`id_product`),
+  CONSTRAINT `promoted_gift_post_id_fk_1` FOREIGN KEY (`id_promotion`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `promoted_gift_post_id_fk_2` FOREIGN KEY (`id_product`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1018,7 +1019,7 @@ DROP TABLE IF EXISTS `promotion_ar`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promotion_ar` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `description` text,
   `id_promotion` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -1045,7 +1046,7 @@ DROP TABLE IF EXISTS `promotion_fr`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `promotion_fr` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `description` text,
   `id_promotion` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -1097,7 +1098,7 @@ CREATE TABLE `step` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_order` int NOT NULL,
   `id_state` int NOT NULL,
-  `note` varchar(255) DEFAULT NULL,
+  `note` text,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `step_order_id_fk` (`id_order`),
@@ -1125,7 +1126,7 @@ DROP TABLE IF EXISTS `step_observable`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `step_observable` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `note` varchar(255) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
   `id_observable` int NOT NULL,
   `id_step` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -1161,7 +1162,7 @@ CREATE TABLE `supplier` (
   `email` varchar(50) DEFAULT NULL,
   `note` text,
   `user_name` varchar(10) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   `conn` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1217,7 +1218,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(10) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `position` varchar(50) DEFAULT NULL,
@@ -1245,4 +1246,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-07  8:33:53
+-- Dump completed on 2021-01-09 10:37:07

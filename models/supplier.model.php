@@ -64,6 +64,7 @@ class Supplier
      * @param string $_user_name
      * @param string $_password
      * @param bool $_conn
+     * @throws Exception
      */
     public function __construct(int $_id, string $_name, string $_last_name, string $_phone, string $_address, string $_region, string $_email, string $_note, string $_user_name, string $_password, bool $_conn)
     {
@@ -76,7 +77,7 @@ class Supplier
         $this->setEmail($_email);
         $this->setNote($_note);
         $this->setUserName($_user_name);
-        $this->setPassword($_phone);
+        $this->setPassword($_password);
         $this->setConn($_conn);
     }
 
@@ -90,10 +91,15 @@ class Supplier
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -106,10 +112,16 @@ class Supplier
 
     /**
      * @param string $name
+     * length : 3 .. 50
+     * @throws Exception
      */
     public function setName(string $name): void
     {
-        $this->_name = $name;
+        if ((strcmp(gettype($name), 'string') == 0) && (strlen($name) >= 3) && (strlen($name) <= 50)) {
+            $this->_name = $name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -122,10 +134,16 @@ class Supplier
 
     /**
      * @param string $last_name
+     * length : 3 .. 50
+     * @throws Exception
      */
     public function setLastName(string $last_name): void
     {
-        $this->_last_name = $last_name;
+        if ((strcmp(gettype($last_name), 'string') == 0) && (strlen($last_name) >= 3) && (strlen($last_name) <= 50)) {
+            $this->_last_name = $last_name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -138,10 +156,16 @@ class Supplier
 
     /**
      * @param string $phone
+     * length = 8 and is numeric
+     * @throws Exception
      */
     public function setPhone(string $phone): void
     {
-        $this->_phone = $phone;
+        if ((strcmp(gettype($phone), 'string') == 0) && (strlen($phone) == 8) && is_numeric($phone)) {
+            $this->_phone = $phone;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -154,10 +178,16 @@ class Supplier
 
     /**
      * @param string $address
+     * length : 3 .. 254
+     * @throws Exception
      */
     public function setAddress(string $address): void
     {
-        $this->_address = $address;
+        if ((strcmp(gettype($address), 'string') == 0) && (strlen($address) >= 3) && (strlen($address) <= 254)) {
+            $this->_address = $address;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -170,10 +200,16 @@ class Supplier
 
     /**
      * @param string $region
+     * length : 1 .. 15
+     * @throws Exception
      */
     public function setRegion(string $region): void
     {
-        $this->_region = $region;
+        if ((strcmp(gettype($region), 'string') == 0) && (strlen($region) >= 1) && (strlen($region) <= 15)) {
+            $this->_region = $region;
+        } else {
+            throw new Exception('Unexceped value for this field');
+        }
     }
 
     /**
@@ -186,10 +222,16 @@ class Supplier
 
     /**
      * @param string $email
+     * length : 10 .. 50
+     * @throws Exception
      */
     public function setEmail(string $email): void
     {
-        $this->_email = $email;
+        if ((strcmp(gettype($email), 'string') == 0) && (strlen($email) >= 10) && (strlen($email) <= 50)) {
+            $this->_email = $email;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -202,10 +244,16 @@ class Supplier
 
     /**
      * @param string $note
+     * length < 1
+     * @throws Exception
      */
     public function setNote(string $note): void
     {
-        $this->_note = $note;
+        if ((strcmp(gettype($note), 'string') == 0) && (strlen($note) >= 1)) {
+            $this->_note = $note;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -218,10 +266,16 @@ class Supplier
 
     /**
      * @param string $user_name
+     * length : 4 .. 10
+     * @throws Exception
      */
     public function setUserName(string $user_name): void
     {
-        $this->_user_name = $user_name;
+        if ((strcmp(gettype($user_name), 'string') == 0) && (strlen($user_name) >= 4) && (strlen($user_name) <= 10)) {
+            $this->_user_name = $user_name;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -234,10 +288,16 @@ class Supplier
 
     /**
      * @param string $password
+     * length : 8 .. 20
+     * @throws Exception
      */
     public function setPassword(string $password): void
     {
-        $this->_password = $password;
+        if ((strcmp(gettype($password), 'string') == 0) && (strlen($password) >= 8) && (strlen($password) <= 20)) {
+            $this->_password = $password;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -250,10 +310,15 @@ class Supplier
 
     /**
      * @param bool $conn
+     * @throws Exception
      */
     public function setConn(bool $conn): void
     {
-        $this->_conn = $conn;
+        if (strcmp(gettype($conn), 'boolean') == 0) {
+            $this->_conn = $conn;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

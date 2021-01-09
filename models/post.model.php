@@ -20,7 +20,6 @@ class Post
      * @param int $_id
      * @param string $_code
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_code)
     {
@@ -38,7 +37,6 @@ class Post
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -60,7 +58,7 @@ class Post
 
     /**
      * @param string $code
-     * @throws Exception
+     * length : 4 .. 50
      * @throws Exception
      */
     public function setCode(string $code): void

@@ -64,11 +64,12 @@ class Discount
 
     /**
      * @param float $value
+     * value > 0
      * @throws Exception
      */
     public function setValue(float $value): void
     {
-        if ((strcmp(gettype($value), 'double') == 0) && ($value >= 0)) {
+        if ((strcmp(gettype($value), 'double') == 0) && ($value > 0)) {
             $this->_value = $value;
         } else {
             throw new Exception('Unexceped value for this filed');

@@ -30,7 +30,6 @@ class ProductFr
      * @param string $_description
      * @param int $_id_product
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_designation, string $_description, int $_id_product)
     {
@@ -71,7 +70,7 @@ class ProductFr
 
     /**
      * @param string $designation
-     * @throws Exception
+     * length : 1 ..50
      * @throws Exception
      */
     public function setDesignation(string $designation): void
@@ -93,7 +92,7 @@ class ProductFr
 
     /**
      * @param string $description
-     * @throws Exception
+     * length >= 1
      * @throws Exception
      */
     public function setDescription(string $description): void
@@ -115,7 +114,6 @@ class ProductFr
 
     /**
      * @param int $id_product
-     * @throws Exception
      * @throws Exception
      */
     public function setIdProduct(int $id_product): void

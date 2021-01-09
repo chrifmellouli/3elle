@@ -64,11 +64,12 @@ class DiscountOnOrder
 
     /**
      * @param float $amount_order
+     * value > 0
      * @throws Exception
      */
     public function setAmountOrder(float $amount_order): void
     {
-        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order >= 0)) {
+        if ((strcmp(gettype($amount_order), 'double') == 0) && ($amount_order > 0)) {
             $this->_amount_order = $amount_order;
         } else {
             throw new Exception('Unexceped value for this filed');

@@ -58,6 +58,7 @@ class Category
 
     /**
      * @param String $code
+     * length : 4 .. 8
      * @throws Exception
      */
     public function setCode(string $code): void

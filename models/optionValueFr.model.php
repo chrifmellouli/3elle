@@ -25,7 +25,6 @@ class OptionValueFr
      * @param string $_value
      * @param int $_id_option_value
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, string $_value, int $_id_option_value)
     {
@@ -44,7 +43,6 @@ class OptionValueFr
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -66,7 +64,7 @@ class OptionValueFr
 
     /**
      * @param string $value
-     * @throws Exception
+     * length : 1 .. 50
      * @throws Exception
      */
     public function setValue(string $value): void
@@ -88,7 +86,6 @@ class OptionValueFr
 
     /**
      * @param int $id_option_value
-     * @throws Exception
      * @throws Exception
      */
     public function setIdOptionValue(int $id_option_value): void

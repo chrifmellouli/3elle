@@ -25,7 +25,6 @@ class PromotedGift
      * @param int $_id_promotion
      * @param int $_number
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id_product, int $_id_promotion, int $_number)
     {
@@ -44,7 +43,6 @@ class PromotedGift
 
     /**
      * @param int $id_product
-     * @throws Exception
      * @throws Exception
      */
     public function setIdProduct(int $id_product): void
@@ -67,7 +65,6 @@ class PromotedGift
     /**
      * @param int $id_promotion
      * @throws Exception
-     * @throws Exception
      */
     public function setIdPromotion(int $id_promotion): void
     {
@@ -88,7 +85,7 @@ class PromotedGift
 
     /**
      * @param int $number
-     * @throws Exception
+     * value > 0
      * @throws Exception
      */
     public function setNumber(int $number): void

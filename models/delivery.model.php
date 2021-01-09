@@ -58,6 +58,7 @@ class Delivery
 
     /**
      * @param int $price
+     * value > 0
      * @throws Exception
      */
     public function setPrice(int $price): void

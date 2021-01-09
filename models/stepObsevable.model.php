@@ -26,6 +26,7 @@ class StepObsevable
      * @param string $_note
      * @param int $_id_step
      * @param int $_id_observable
+     * @throws Exception
      */
     public function __construct(int $_id, string $_note, int $_id_step, int $_id_observable)
     {
@@ -45,10 +46,15 @@ class StepObsevable
 
     /**
      * @param int $id
+     * @throws Exception
      */
     public function setId(int $id): void
     {
-        $this->_id = $id;
+        if (strcmp(gettype($id), 'integer') == 0) {
+            $this->_id = $id;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -61,10 +67,16 @@ class StepObsevable
 
     /**
      * @param string $note
+     * length > 1
+     * @throws Exception
      */
     public function setNote(string $note): void
     {
-        $this->_note = $note;
+        if ((strcmp(gettype($note), 'string') == 0) && (strlen($note) >= 1) && (strlen($note) <= 100)) {
+            $this->_note = $note;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -77,10 +89,15 @@ class StepObsevable
 
     /**
      * @param int $id_step
+     * @throws Exception
      */
     public function setIdStep(int $id_step): void
     {
-        $this->_id_step = $id_step;
+        if (strcmp(gettype($id_step), 'integer') == 0) {
+            $this->_id_step = $id_step;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
     /**
@@ -93,10 +110,15 @@ class StepObsevable
 
     /**
      * @param int $id_observable
+     * @throws Exception
      */
     public function setIdObservable(int $id_observable): void
     {
-        $this->_id_observable = $id_observable;
+        if (strcmp(gettype($id_observable), 'integer') == 0) {
+            $this->_id_observable = $id_observable;
+        } else {
+            throw new Exception('Unexceped value for this filed');
+        }
     }
 
 }

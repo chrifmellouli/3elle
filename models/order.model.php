@@ -33,7 +33,6 @@ class Order extends Utilities
      * @param int $_id_delivery
      * @param int $_id_customer
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, int $_id_delivery, int $_id_customer)
     {
@@ -55,7 +54,6 @@ class Order extends Utilities
     /**
      * @param int $id
      * @throws Exception
-     * @throws Exception
      */
     public function setId(int $id): void
     {
@@ -76,7 +74,8 @@ class Order extends Utilities
 
     /**
      * @param string $code
-     * @throws Exception
+     * This is an auto generated field by the constructor at the moment of the orders's creation
+     * length 6 .. 50
      * @throws Exception
      */
     private function setCode(string $code): void
@@ -98,7 +97,7 @@ class Order extends Utilities
 
     /**
      * @param DateTime $date
-     * @throws Exception
+     * This is an auto generated field by the constructor at the moment of the orders's creation
      * @throws Exception
      */
     private function setDate(DateTime $date): void
@@ -121,7 +120,6 @@ class Order extends Utilities
     /**
      * @param int $id_delivery
      * @throws Exception
-     * @throws Exception
      */
     public function setIdDelivery(int $id_delivery): void
     {
@@ -142,7 +140,6 @@ class Order extends Utilities
 
     /**
      * @param int $id_customer
-     * @throws Exception
      * @throws Exception
      */
     public function setIdCustomer(int $id_customer): void

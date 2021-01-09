@@ -26,7 +26,6 @@ class GiftOnProduct
      * @param int $_product_number
      * @param int $_id_gift
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id, int $_product_number, int $_id_gift)
     {
@@ -45,7 +44,6 @@ class GiftOnProduct
 
     /**
      * @param int $id
-     * @throws Exception
      * @throws Exception
      */
     public function setId(int $id): void
@@ -67,7 +65,7 @@ class GiftOnProduct
 
     /**
      * @param int $product_number
-     * @throws Exception
+     * value > 0
      * @throws Exception
      */
     public function setProductNumber(int $product_number): void
@@ -89,7 +87,6 @@ class GiftOnProduct
 
     /**
      * @param int $id_gift
-     * @throws Exception
      * @throws Exception
      */
     public function setIdGift(int $id_gift): void

@@ -25,7 +25,6 @@ class OrderLine
      * @param int $_id_order
      * @param int $_quantity
      * @throws Exception
-     * @throws Exception
      */
     public function __construct(int $_id_product, int $_id_order, int $_quantity)
     {
@@ -44,7 +43,6 @@ class OrderLine
 
     /**
      * @param int $id_product
-     * @throws Exception
      * @throws Exception
      */
     public function setIdProduct(int $id_product): void
@@ -67,7 +65,6 @@ class OrderLine
     /**
      * @param int $id_order
      * @throws Exception
-     * @throws Exception
      */
     public function setIdOrder(int $id_order): void
     {
@@ -88,7 +85,7 @@ class OrderLine
 
     /**
      * @param int $quantity
-     * @throws Exception
+     * value > 0
      * @throws Exception
      */
     public function setQuantity(int $quantity): void

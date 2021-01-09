@@ -31,6 +31,7 @@ class BlackList
 
     /**
      * @param string $phone
+     * length = 8 and is numeric
      * @throws Exception
      */
     public function setPhone(string $phone): void
