@@ -27,7 +27,11 @@ echo '<h6>CONNEXION SUCCESSED</h6>';
 <h6>-----------------------------------</h6>
 <?php
 echo '<h3>User : </h3>';
-$_new_user = new UserDao(0, 'developer', 'pwd&&!!', 'Chrif', 'MELLOULI', 'engineer', true, false);
+try {
+    $_new_user = new User(0, 'developer', 'pwd&&8!!', 'Chrif', 'MELLOULI', 'engineer', true, false);
+} catch (Exception $e) {
+    echo '*' . $e->getMessage() . '*';
+}
 $stm_user = SPDO::getInstance()->query('SELECT id, user_name, password, name, last_name, position, enabled, is_connected  FROM user');
 $users = $stm_user->fetchAll();
 print_r($users);
@@ -56,6 +60,5 @@ echo date("y");
 echo '<h3>Month : </h3>';
 echo date("m");
 ?>
-</button>
 </body>
 </html>
