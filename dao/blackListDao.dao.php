@@ -21,7 +21,7 @@ interface BlackListDao
 
     /**
      * @param BlackList $blackList
-     * @return int
+     * @return int last inserted id
      */
     function save(BlackList $blackList): int;
 
