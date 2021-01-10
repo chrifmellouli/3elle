@@ -31,4 +31,8 @@ interface BlackListDao
      */
     function update(BlackList $blackList): void;
 
+    /**
+     * @param int $id
+     */
+    function delete(int $id):void;
 }

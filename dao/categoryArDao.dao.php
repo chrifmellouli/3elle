@@ -29,7 +29,7 @@ interface CategoryArDao
      * @param string $code
      * @return CategoryAr|null
      */
-    function findAllInfoCategoryByCode(string $code):?CategoryAr;
+    function findAllInfoCategoryByCode(string $code):?iterable;
 
     /**
      * @param string $designation
@@ -59,4 +59,8 @@ interface CategoryArDao
      */
     function update(CategoryAr $categoryAr):void;
 
+    /**
+     * @param int $id
+     */
+    function delete(int $id):void;
 }

@@ -53,4 +53,8 @@ interface AuthorizationDao
      */
     function update(Authorization $authorization): void;
 
+    /**
+     * @param int $id
+     */
+    function delete(int $id):void;
 }

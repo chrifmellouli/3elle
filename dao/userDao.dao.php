@@ -78,4 +78,8 @@ interface UserDao
      */
     function update(User $user): void;
 
+    /**
+     * @param int $id
+     */
+    function delete(int $id):void;
 }

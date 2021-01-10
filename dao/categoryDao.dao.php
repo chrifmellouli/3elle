@@ -40,4 +40,8 @@ interface CategoryDao
      */
     function update(Category $category):void;
 
+    /**
+     * @param int $id
+     */
+    function delete(int $id):void;
 }
