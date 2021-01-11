@@ -15,9 +15,9 @@ interface CategoryFrDao
 
     /**
      * @param int $id
-     * @return CategoryFr|null
+     * @return iterable|null
      */
-    function findAllInfoCategoryById(int $id):?CategoryFr;
+    function findAllInfoCategoryById(int $id):?iterable;
 
     /**
      * @param string $code
@@ -27,7 +27,7 @@ interface CategoryFrDao
 
     /**
      * @param string $code
-     * @return CategoryFr|null
+     * @return iterable|null
      */
     function findAllInfoCategoryByCode(string $code):?iterable;
 

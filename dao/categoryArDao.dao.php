@@ -15,9 +15,9 @@ interface CategoryArDao
 
     /**
      * @param int $id
-     * @return CategoryAr|null
+     * @return iterable|null
      */
-    function findAllInfoCategoryById(int $id):?CategoryAr;
+    function findAllInfoCategoryById(int $id):?iterable;
 
     /**
      * @param string $code
@@ -27,7 +27,7 @@ interface CategoryArDao
 
     /**
      * @param string $code
-     * @return CategoryAr|null
+     * @return iterable|null
      */
     function findAllInfoCategoryByCode(string $code):?iterable;
 

@@ -2,16 +2,16 @@
 
 
 /**
- * Interface DiscountOnOrder
+ * Interface FreeDeliveryOrderDao
  */
-interface DiscountOnOrder
+interface FreeDeliveryOrderDao
 {
 
     /**
      * @param int $id
-     * @return DiscountOnOrder|null
+     * @return FreeDeliveryOrder|null
      */
-    function findById(int $id): ?DiscountOnOrder;
+    function findById(int $id): ?FreeDeliveryOrder;
 
     /**
      * @param float $order_amount
@@ -20,22 +20,22 @@ interface DiscountOnOrder
     function findByOrderAmount(float $order_amount): ?iterable;
 
     /**
-     * @param int $id_discount
+     * @param int $id_free_delivery
      * @return iterable|null
      */
-    function findByIdDiscount(int $id_discount): ?iterable;
+    function findByIdFreeDelivery(int $id_free_delivery): ?iterable;
 
     /**
      * @param int $id
      * @return iterable|null
      */
-    function findAllDiscount(int $id): ?iterable;
+    function findAllFreeDeliveryOrder(int $id): ?iterable;
 
     /**
      * @param int $id
      * @return iterable
      */
-    function findAllInfoDiscountOnOrder(int $id): iterable;
+    function findAllInfoFreeDeliveryOnOrder(int $id): iterable;
 
     /**
      * @return iterable|null
@@ -48,15 +48,15 @@ interface DiscountOnOrder
     function findAll(): ?iterable;
 
     /**
-     * @param DiscountOnOrder $discountOnOrder
+     * @param FreeDeliveryOrder $freeDeliveryOrder
      * @return int last inserted id
      */
-    function save(DiscountOnOrder $discountOnOrder): int;
+    function save(FreeDeliveryOrder $freeDeliveryOrder): int;
 
     /**
-     * @param DiscountOnOrder $discountOnOrder
+     * @param FreeDeliveryOrder $freeDeliveryOrder
      */
-    function update(DiscountOnOrder $discountOnOrder): void;
+    function update(FreeDeliveryOrder $freeDeliveryOrder): void;
 
     /**
      * @param int $id
