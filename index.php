@@ -59,6 +59,7 @@ echo '<h3>Year : </h3>';
 echo date("y");
 echo '<h3>Month : </h3>';
 echo date("m");
+$p=new PDOStatement();
 ?>
 </body>
 </html>
