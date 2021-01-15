@@ -2,11 +2,11 @@
 ini_set('display_errors', 'on');
 include "models/Utilities.model.php";
 include "models/privilege.model.php";
-include "models/user.model.php";
 include "models/history.model.php";
 include "models/authorization.model.php";
 include "models/spdo.model.php";
 include "models/customer.model.php";
+include "daoImpl/UserDaoImpl.impl.php"
 ?>
 <html lang="EN">
 <head>
@@ -26,15 +26,45 @@ echo '<h6>CONNEXION SUCCESSED</h6>';
 ?>
 <h6>-----------------------------------</h6>
 <?php
+function s($u)
+{
+    if (!empty($u)) {
+        $s = $u->getId() . '<br>' . $u->getUserName() . '<br>' . $u->getPassword() . '<br>' . $u->getName() . '<br>' . $u->getLastName() . '<br>' . $u->getPosition() . '<br>' . $u->isEnabled() . '<br>' . $u->isIsConnected() . '<br>';
+        print_r($s);
+    } else {
+        echo 'no value<br>';
+    }
+}
+
 echo '<h3>User : </h3>';
 try {
     $_new_user = new User(0, 'developer', 'pwd&&8!!', 'Chrif', 'MELLOULI', 'engineer', true, false);
+    $user1 = new UserDaoImpl();
+    print_r($user1->save($_new_user));
 } catch (Exception $e) {
     echo '*' . $e->getMessage() . '*';
 }
-$stm_user = SPDO::getInstance()->query('SELECT id, user_name, password, name, last_name, position, enabled, is_connected  FROM user');
-$users = $stm_user->fetchAll();
-print_r($users);
+$user = new UserDaoImpl();
+try {
+    $u = $user->findById(1);
+    s($u);
+} catch (Exception $e) {
+    echo 'exception';
+}
+try {
+    $u = $user->findById(3);
+    s($u);
+} catch (Exception $e) {
+    echo 'exception';
+}
+
+try {
+    $u = $user->findById(4);
+    s($u);
+} catch (Exception $e) {
+    echo 'exception';
+}
+
 echo '<h3>History : </h3>';
 try {
     $h = new History(0, 0, 0);
@@ -59,7 +89,7 @@ echo '<h3>Year : </h3>';
 echo date("y");
 echo '<h3>Month : </h3>';
 echo date("m");
-$p=new PDOStatement();
+$p = new PDOStatement();
 ?>
 </body>
 </html>

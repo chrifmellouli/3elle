@@ -1,4 +1,5 @@
 <?php
+require "models/user.model.php";
 
 /**
  * Interface UserDao

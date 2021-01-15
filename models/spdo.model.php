@@ -89,4 +89,15 @@ class SPDO
     {
         return $this->PDOInstance->query($query);
     }
+
+    /**
+     * Execute an sql query with PDO
+     *
+     * @param string $query SQL query
+     * @return int
+     */
+    public function exec(string $query):PDOStatement
+    {
+        return $this->PDOInstance->prepare($query);
+    }
 }
