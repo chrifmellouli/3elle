@@ -59,7 +59,7 @@ class SPDO
      */
     private function __construct()
     {
-        $this->PDOInstance = new PDO('mysql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS);
+        $this -> PDOInstance = new PDO( 'mysql:dbname=' . self::DEFAULT_SQL_DTB . ';host=' . self::DEFAULT_SQL_HOST, self::DEFAULT_SQL_USER, self::DEFAULT_SQL_PASS );
     }
 
     /**
@@ -70,13 +70,12 @@ class SPDO
      * @param void
      * @return SPDO $instance
      */
-    public static function getInstance():?SPDO
+    public static function getInstance(): ?SPDO
     {
-        if(is_null(self::$instance))
-        {
-            self::$instance = new SPDO();
+        if (is_null ( self ::$instance )) {
+            self ::$instance = new SPDO();
         }
-        return self::$instance;
+        return self ::$instance;
     }
 
     /**
@@ -85,19 +84,32 @@ class SPDO
      * @param string $query SQL query
      * @return PDOStatement Return PDOStatement object
      */
-    public function query(string $query):PDOStatement
+    public function query(string $query): PDOStatement
     {
-        return $this->PDOInstance->query($query);
+        return $this -> PDOInstance -> query ( $query );
     }
 
     /**
-     * Execute an sql query with PDO
+     * Execute an insert sql query with PDO
      *
      * @param string $query SQL query
-     * @return int
+     * @return string
      */
-    public function exec(string $query):PDOStatement
+    public function exec(string $query): string
     {
-        return $this->PDOInstance->prepare($query);
+        $this -> PDOInstance -> prepare ( $query ) -> execute ();
+        return $this -> PDOInstance -> lastInsertId ();
     }
+
+    /**
+     * Execute an update sql query with PDO
+     *
+     * @param string $query
+     * @return string
+     */
+    public function update(string $query): string
+    {
+        $this -> PDOInstance -> prepare ( $query ) -> execute ();
+    }
+
 }

@@ -1,5 +1,6 @@
 /.idea
 /workshop
+/test
 composer.json
 docker-compose.yml
 license.txt

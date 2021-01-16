@@ -2,6 +2,9 @@
 
 require "dao/userDao.dao.php";
 
+/**
+ * Class UserDaoImpl
+ */
 class UserDaoImpl implements UserDao
 {
 
@@ -13,7 +16,8 @@ class UserDaoImpl implements UserDao
      */
     function findById(int $id): ?User
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE id={$id}" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE id={$id}";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return sizeof ( $stmt_user ) == 0 ? null : new User( (int)$stmt_user[0] ['id'],
             $stmt_user[0] ['user_name'],
             $stmt_user[0] ['password'],
@@ -31,7 +35,8 @@ class UserDaoImpl implements UserDao
      */
     function findByUserName(string $user_name): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE user_name LIKE %{$user_name}%" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE user_name LIKE %{$user_name}%";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -43,7 +48,8 @@ class UserDaoImpl implements UserDao
      */
     function findByUserNameAndPassword(string $user_name, string $password): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE user_name ={$user_name} AND password = {$password}" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE user_name ={$user_name} AND password = {$password}";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -54,7 +60,8 @@ class UserDaoImpl implements UserDao
      */
     function findByName(string $name): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE name LIKE %{$name}%" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE name LIKE %{$name}%";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -65,7 +72,8 @@ class UserDaoImpl implements UserDao
      */
     function findByLastName(string $last_name): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE last_name LIKE %{$last_name}%" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE last_name LIKE %{$last_name}%";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -76,7 +84,8 @@ class UserDaoImpl implements UserDao
      */
     function findByIsConnected(bool $is_connected): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE is_connected = {$is_connected}" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE is_connected = {$is_connected}";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -87,28 +96,9 @@ class UserDaoImpl implements UserDao
      */
     function findByIsEnabled(bool $is_enabled): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE enabled = {$is_enabled}" ) -> fetchAll ();
+        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user WHERE enabled = {$is_enabled}";
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
-    }
-
-    /**
-     * @param int $id_user
-     * @return iterable|null
-     */
-    function findAllHistories(int $id_user): ?iterable
-    {
-        // TODO: Implement findAllHistories() method.
-        return null;
-    }
-
-    /**
-     * @param int $id_user
-     * @return iterable|null
-     */
-    function findAllAuthorizations(int $id_user): ?iterable
-    {
-        // TODO: Implement findAllAuthorizations() method.
-        return null;
     }
 
     /**
@@ -117,7 +107,8 @@ class UserDaoImpl implements UserDao
      */
     function findAll(): ?iterable
     {
-        $stmt_user = SPDO ::getInstance () -> query ( 'SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user ' ) -> fetchAll ();
+        $query = 'SELECT id, user_name, password, name, last_name, position, enabled, is_connected FROM user ';
+        $stmt_user = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
         return $this -> getUsers ( $stmt_user );
     }
 
@@ -127,8 +118,15 @@ class UserDaoImpl implements UserDao
      */
     function save(User $user): int
     {
-        SPDO ::getInstance () -> exec ( "INSERT INTO user(user_name, password, name, last_name, position, enabled, is_connected) VALUES ({$user->getUserName()},{$user->getPassword()},{$user->getName()},{$user->getLastName()},{$user->getPosition()},{$user->isEnabled()},{$user->isIsConnected()})" );
-        return 0;
+        /** bool variables witch values are false will be ignored by PHP interpreter
+         * when we try to construct query
+         * So we should convert bool variable to int to avoid empty string in query*/
+        /** @var bool $is_enable */
+        $is_enable = (int)$user -> isEnabled ();
+        /** @var bool $is_conn */
+        $is_conn = (int)$user -> isIsConnected ();
+        $query = "INSERT INTO user(user_name, password, name, last_name, position, enabled, is_connected) VALUES ('{$user -> getUserName ()}' ,'{$user -> getPassword ()}' ,'{$user -> getName ()}','{$user -> getLastName ()}','{$user -> getPosition ()}',{$is_enable},{$is_conn})";
+        return (int)SPDO ::getInstance () -> exec ( $query );
     }
 
     /**
@@ -136,7 +134,15 @@ class UserDaoImpl implements UserDao
      */
     function update(User $user): void
     {
-        // TODO: Implement update() method.
+        /** bool variables witch values are false will be ignored by PHP interpreter
+         * when we try to construct query
+         * So we should convert bool variable to int to avoid empty string in query*/
+        /** @var bool $is_enable */
+        $is_enable = (int)$user -> isEnabled ();
+        /** @var bool $is_conn */
+        $is_conn = (int)$user -> isIsConnected ();
+        $query = "INSERT INTO user(user_name, password, name, last_name, position, enabled, is_connected) VALUES ('{$user -> getUserName ()}' ,'{$user -> getPassword ()}' ,'{$user -> getName ()}','{$user -> getLastName ()}','{$user -> getPosition ()}',{$is_enable},{$is_conn})";
+        SPDO ::getInstance () -> update ( $query );
     }
 
     /**
@@ -174,4 +180,5 @@ class UserDaoImpl implements UserDao
             return null;
         }
     }
+
 }

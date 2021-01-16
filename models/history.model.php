@@ -77,7 +77,7 @@ class History extends Utilities
      * This is an auto generated field by the constructor at the moment of the history's creation
      * @throws Exception
      */
-    private function setDate(DateTime $date): void
+    public function setDate(DateTime $date): void
     {
         if ($this->validateDate($date->format('Y-m-d H:i:s'))) {
             $this->_date = $date;

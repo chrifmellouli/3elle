@@ -52,18 +52,6 @@ interface UserDao
     function findByIsEnabled(bool $is_enabled): ?iterable;
 
     /**
-     * @param int $id_user
-     * @return iterable|null
-     */
-    function findAllHistories(int $id_user): ?iterable;
-
-    /**
-     * @param int $id_user
-     * @return iterable|null
-     */
-    function findAllAuthorizations(int $id_user): ?iterable;
-
-    /**
      * @return iterable|null
      */
     function findAll(): ?iterable;
