@@ -1,12 +1,12 @@
 <?php
 ini_set ( 'display_errors', 'on' );
-include "models/Utilities.model.php";
 include "models/privilege.model.php";
+/*include "models/utilities.model.php";
 include "models/history.model.php";
-include "models/authorization.model.php";
+include "models/authorization.model.php";*/
 include "models/spdo.model.php";
-include "models/customer.model.php";
-include "daoImpl/UserDaoImpl.impl.php"
+//include "models/customer.model.php";
+include "repositories/userRepo.repositorie.php";
 ?>
 <html lang="EN">
 <head>
@@ -38,33 +38,23 @@ function s($u)
 
 echo '<h3>User : </h3>';
 try {
-    $_new_user = new User( 0, 'developer', 'pwd&&8!!', 'Chrif', 'MELLOULI', 'engineer', false, false );
-    $user1 = new UserDaoImpl();
-    echo $user1 -> save ( $_new_user );
+    //$user = new UserDaoImpl();
+    /*    $_new_user1 = new User( 0, 'ch.mel', 'chrifpwd', 'Chrif', 'MELLOULI', 'webmaster', false, false );
+        $last1= $user -> save ( $_new_user1);
+        $usr1=$user->findById ($last1);
+        echo s($usr1);
+        $_new_user2 = new User( 0, 'h.chou', 'chenipwd', 'Heni', 'Choura', 'manager', false, false );
+        $last2= $user -> save ( $_new_user2);
+        $usr2=$user->findById ($last2);
+        echo s($usr2);*/
 } catch (Exception $e) {
     echo '*' . $e -> getMessage () . '*';
 }
-$user = new UserDaoImpl();
-try {
-    $u = $user -> findById ( 1 );
-    s ( $u );
-} catch (Exception $e) {
-    echo 'exception';
-}
-try {
-    $u = $user -> findById ( 3 );
-    s ( $u );
-} catch (Exception $e) {
-    echo 'exception';
-}
-
-try {
-    $u = $user -> findById ( 4 );
-    s ( $u );
-} catch (Exception $e) {
-    echo 'exception';
-}
-
+$c = new UserRepo();
+$c -> connexion ( $_POST['user_name'], $_POST['password'] );
+exit;
+echo "-----------------";
+/*
 echo '<h3>History : </h3>';
 try {
     $h = new History( 0, 0, 0 );
@@ -84,7 +74,7 @@ try {
     $p -> setDesignation ( "lkj" );
 } catch (Exception $e) {
 
-}
+}*/
 echo '<h3>Year : </h3>';
 echo date ( "y" );
 echo '<h3>Month : </h3>';

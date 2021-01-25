@@ -3,6 +3,7 @@
 
 /**
  * Class SPDO
+ * @property SPDO|null instance
  */
 class SPDO
 {
@@ -84,9 +85,14 @@ class SPDO
      * @param string $query SQL query
      * @return PDOStatement Return PDOStatement object
      */
-    public function query(string $query): PDOStatement
+    public function query(string $query): ?PDOStatement
     {
-        return $this -> PDOInstance -> query ( $query );
+        $result = $this -> PDOInstance -> query ( $query );
+        if (strcmp ( gettype ( $result ), 'boolean' ) == 0) {
+            return null;
+        } else {
+            return $result;
+        }
     }
 
     /**
@@ -95,7 +101,7 @@ class SPDO
      * @param string $query SQL query
      * @return string
      */
-    public function exec(string $query): string
+    public function insert(string $query): string
     {
         $this -> PDOInstance -> prepare ( $query ) -> execute ();
         return $this -> PDOInstance -> lastInsertId ();
@@ -105,9 +111,8 @@ class SPDO
      * Execute an update sql query with PDO
      *
      * @param string $query
-     * @return string
      */
-    public function update(string $query): string
+    public function updateOrDelete(string $query): void
     {
         $this -> PDOInstance -> prepare ( $query ) -> execute ();
     }

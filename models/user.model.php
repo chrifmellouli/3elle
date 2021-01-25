@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Class User
  */
@@ -53,14 +52,14 @@ class User
      */
     public function __construct(int $_id, string $_user_name, string $_password, string $_name, string $_last_name, string $_position, bool $_enabled, bool $_is_connected)
     {
-        $this->setId($_id);
-        $this->setUserName($_user_name);
-        $this->setPassword($_password);
-        $this->setName($_name);
-        $this->setLastName($_last_name);
-        $this->setPosition($_position);
-        $this->setEnabled($_enabled);
-        $this->setIsConnected($_is_connected);
+        $this -> setId ( $_id );
+        $this -> setUserName ( $_user_name );
+        $this -> setPassword ( $_password );
+        $this -> setName ( $_name );
+        $this -> setLastName ( $_last_name );
+        $this -> setPosition ( $_position );
+        $this -> setEnabled ( $_enabled );
+        $this -> setIsConnected ( $_is_connected );
     }
 
     /**
@@ -68,7 +67,7 @@ class User
      */
     public function getId(): int
     {
-        return $this->_id;
+        return $this -> _id;
     }
 
     /**
@@ -77,10 +76,10 @@ class User
      */
     public function setId(int $id): void
     {
-        if (strcmp(gettype($id), 'integer') == 0) {
-            $this->_id = $id;
+        if (strcmp ( gettype ( $id ), 'integer' ) == 0) {
+            $this -> _id = $id;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -89,7 +88,7 @@ class User
      */
     public function getUserName(): string
     {
-        return $this->_user_name;
+        return $this -> _user_name;
     }
 
     /**
@@ -99,10 +98,10 @@ class User
      */
     public function setUserName(string $user_name): void
     {
-        if ((strcmp(gettype($user_name), 'string') == 0) && (strlen($user_name) >= 4) && (strlen($user_name) <= 10)) {
-            $this->_user_name = $user_name;
+        if ((strcmp ( gettype ( $user_name ), 'string' ) == 0) && (strlen ( $user_name ) >= 4) && (strlen ( $user_name ) <= 10)) {
+            $this -> _user_name = $user_name;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -111,7 +110,7 @@ class User
      */
     public function getPassword(): string
     {
-        return $this->_password;
+        return $this -> _password;
     }
 
     /**
@@ -121,10 +120,10 @@ class User
      */
     public function setPassword(string $password): void
     {
-        if ((strcmp(gettype($password), 'string') == 0) && (strlen($password) >= 8) && (strlen($password) <= 50)) {
-            $this->_password = $password;
+        if ((strcmp ( gettype ( $password ), 'string' ) == 0) && (strlen ( $password ) >= 8) && (strlen ( $password ) <= 50)) {
+            $this -> _password = $password;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -133,7 +132,7 @@ class User
      */
     public function getName(): string
     {
-        return $this->_name;
+        return $this -> _name;
     }
 
     /**
@@ -143,10 +142,10 @@ class User
      */
     public function setName(string $name): void
     {
-        if ((strcmp(gettype($name), 'string') == 0) && (strlen($name) >= 3) && (strlen($name) <= 50)) {
-            $this->_name = $name;
+        if ((strcmp ( gettype ( $name ), 'string' ) == 0) && (strlen ( $name ) >= 3) && (strlen ( $name ) <= 50)) {
+            $this -> _name = $name;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -155,7 +154,7 @@ class User
      */
     public function getLastName(): string
     {
-        return $this->_last_name;
+        return $this -> _last_name;
     }
 
     /**
@@ -165,10 +164,10 @@ class User
      */
     public function setLastName(string $last_name): void
     {
-        if ((strcmp(gettype($last_name), 'string') == 0) && (strlen($last_name) >= 3) && (strlen($last_name) <= 50)) {
-            $this->_last_name = $last_name;
+        if ((strcmp ( gettype ( $last_name ), 'string' ) == 0) && (strlen ( $last_name ) >= 3) && (strlen ( $last_name ) <= 50)) {
+            $this -> _last_name = $last_name;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -177,7 +176,7 @@ class User
      */
     public function getPosition(): string
     {
-        return $this->_position;
+        return $this -> _position;
     }
 
     /**
@@ -187,10 +186,10 @@ class User
      */
     public function setPosition(string $position): void
     {
-        if ((strcmp(gettype($position), 'string') == 0) && (strlen($position) >= 3) && (strlen($position) <= 50)) {
-            $this->_position = $position;
+        if ((strcmp ( gettype ( $position ), 'string' ) == 0) && (strlen ( $position ) >= 3) && (strlen ( $position ) <= 50)) {
+            $this -> _position = $position;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -199,7 +198,7 @@ class User
      */
     public function isEnabled(): bool
     {
-        return $this->_enabled;
+        return $this -> _enabled;
     }
 
     /**
@@ -208,10 +207,10 @@ class User
      */
     public function setEnabled(bool $enabled): void
     {
-        if (strcmp(gettype($enabled), 'boolean') == 0) {
-            $this->_enabled = $enabled;
+        if (strcmp ( gettype ( $enabled ), 'boolean' ) == 0) {
+            $this -> _enabled = $enabled;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -220,7 +219,7 @@ class User
      */
     public function isIsConnected(): bool
     {
-        return $this->_is_connected;
+        return $this -> _is_connected;
     }
 
     /**
@@ -229,10 +228,10 @@ class User
      */
     public function setIsConnected(bool $is_connected): void
     {
-        if (strcmp(gettype($is_connected), 'boolean') == 0) {
-            $this->_is_connected = $is_connected;
+        if (strcmp ( gettype ( $is_connected ), 'boolean' ) == 0) {
+            $this -> _is_connected = $is_connected;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 

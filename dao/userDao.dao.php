@@ -1,5 +1,5 @@
 <?php
-require "models/user.model.php";
+require "../models/user.model.php";
 
 /**
  * Interface UserDao
@@ -18,14 +18,14 @@ interface UserDao
      * @param string $user_name
      * @return iterable|null
      */
-    function findByUserName(string $user_name): ?iterable;
+    function findByUserName(string $user_name): ?User;
 
     /**
      * @param string $user_name
      * @param string $password
      * @return iterable|null
      */
-    function findByUserNameAndPassword(string $user_name, string $password): ?iterable;
+    function findByUserNameAndPassword(string $user_name, string $password): ?User;
 
     /**
      * @param string $name

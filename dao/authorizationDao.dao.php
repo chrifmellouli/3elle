@@ -1,41 +1,12 @@
 <?php
 
+require "../models/authorization.model.php";
 
 /**
  * Interface AuthorizationDao
  */
 interface AuthorizationDao
 {
-    /**
-     * @param int $id_user
-     * @param int $id_privilege
-     * @return Authorization|null
-     */
-    function findById(int $id_user, int $id_privilege): ?Authorization;
-
-    /**
-     * @param int $id_user
-     * @return iterable|null
-     */
-    function findByIdUser(int $id_user): ?iterable;
-
-    /**
-     * @param int $id_privilege
-     * @return iterable|null
-     */
-    function findByIdPrivilege(int $id_privilege): ?iterable;
-
-    /**
-     * @param int $id
-     * @return iterable|null
-     */
-    function findAllUser(int $id): ?iterable;
-
-    /**
-     * @param int $id
-     * @return iterable|null
-     */
-    function findAllPrivilege(int $id): ?iterable;
 
     /**
      * @return iterable|null
@@ -49,12 +20,9 @@ interface AuthorizationDao
     function save(Authorization $authorization): int;
 
     /**
-     * @param Authorization $authorization
+     * @param int $id_user
+     * @param int $id_privilege
      */
-    function update(Authorization $authorization): void;
+    function delete(int $id_user, int $id_privilege): void;
 
-    /**
-     * @param int $id
-     */
-    function delete(int $id):void;
 }

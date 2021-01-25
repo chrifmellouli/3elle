@@ -15,22 +15,22 @@ class Authorization
      */
     private int $_id_privilege;
     /**
-     * @var bool
+     * @var int
      */
-    private bool $_permission;
+    private int $_permission;
 
     /**
      * Authorization constructor.
      * @param int $_id_user
      * @param int $_id_privilege
-     * @param bool $_permission
+     * @param int $_permission
      * @throws Exception
      */
-    public function __construct(int $_id_user, int $_id_privilege, bool $_permission)
+    public function __construct(int $_id_user, int $_id_privilege, int $_permission)
     {
-        $this->setIdUser($_id_user);
-        $this->setIdPrivilege($_id_privilege);
-        $this->setPermission($_permission);
+        $this -> setIdUser ( $_id_user );
+        $this -> setIdPrivilege ( $_id_privilege );
+        $this -> setPermission ( $_permission );
     }
 
 
@@ -39,7 +39,7 @@ class Authorization
      */
     public function getIdUser(): int
     {
-        return $this->_id_user;
+        return $this -> _id_user;
     }
 
     /**
@@ -48,10 +48,10 @@ class Authorization
      */
     public function setIdUser(int $id_user): void
     {
-        if (strcmp(gettype($id_user), 'integer') == 0) {
-            $this->_id_user = $id_user;
+        if (strcmp ( gettype ( $id_user ), 'integer' ) == 0) {
+            $this -> _id_user = $id_user;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
@@ -60,7 +60,7 @@ class Authorization
      */
     public function getIdPrivilege(): int
     {
-        return $this->_id_privilege;
+        return $this -> _id_privilege;
     }
 
     /**
@@ -69,32 +69,33 @@ class Authorization
      */
     public function setIdPrivilege(int $id_privilege): void
     {
-        if (strcmp(gettype($id_privilege), 'integer') == 0) {
-            $this->_id_privilege = $id_privilege;
+        if (strcmp ( gettype ( $id_privilege ), 'integer' ) == 0) {
+            $this -> _id_privilege = $id_privilege;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
 
     /**
-     * @return bool
+     * @return int
      */
-    public function isPermission(): bool
+    public function getPermission(): int
     {
-        return $this->_permission;
+        return $this -> _permission;
     }
 
     /**
-     * @param bool $permission
+     * @param int $permission
      * @throws Exception
      */
-    public function setPermission(bool $permission): void
+    public function setPermission(int $permission): void
     {
-        if (strcmp(gettype($permission), 'boolean') == 0) {
-            $this->_permission = $permission;
+        if ((strcmp ( gettype ( $permission ), 'integer' ) == 0) && ($permission >= 0) && ($permission <= 2)) {
+            $this -> _permission = $permission;
         } else {
-            throw new Exception('Unexceped value for this filed');
+            throw new Exception( 'Unexceped value for this filed' );
         }
     }
+
 
 }
