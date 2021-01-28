@@ -56,7 +56,7 @@ class AuthorizationRepo extends Repo
             return $this -> _authorization_dao_impl -> findAll ();
 
         } catch (Exception $e) {
-            $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.html' );
+            $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
             return null;
         }
     }
@@ -82,13 +82,13 @@ class AuthorizationRepo extends Repo
                 if ( ($user != null) && ($privilege != null) ) {
                     $this -> _authorization_dao_impl -> delete ( $id_user, $id_privilege );
                 } else {
-                    $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.html' );
+                    $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
                 }
             } else {
-                $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.html' );
+                $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
             }
         } catch (Exception $e) {
-            $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.html' );
+            $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
         }
     }
 

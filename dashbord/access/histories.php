@@ -1,4 +1,10 @@
-<?php $show_submenue_item_access = true; ?>
+<?php
+if ( !isset( $_SESSION ) ) {
+    session_start ();
+}
+include "../includes/verification/verification.php";
+$show_submenue_item_access = true;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--   Head   -->

@@ -1,12 +1,3 @@
-<?php
-if ( isset( $_REQUEST[ 'users' ] ) ) {
-    $serialised_users = $_REQUEST[ 'users' ];
-    $safe_object = str_replace ( "~~~~", "\0", $serialised_users );
-    $users = (array)unserialize ( $safe_object );
-} else {
-    $users = [];
-}
-?>
 <div class="table-responsive">
     <table class="display table table-striped table-hover"
            id="multi-filter-select">
@@ -17,7 +8,6 @@ if ( isset( $_REQUEST[ 'users' ] ) ) {
             <th>Nom</th>
             <th>Position</th>
             <th>Active</th>
-            <th>Connecté</th>
             <th style="width: 10%;">Action</th>
         </tr>
         </thead>
@@ -28,47 +18,56 @@ if ( isset( $_REQUEST[ 'users' ] ) ) {
             <th>Nom</th>
             <th>Position</th>
             <th>Active</th>
-            <th>Connecté</th>
             <th>Action</th>
         </tr>
         </tfoot>
         <tbody>
-        <?php foreach ($users as $user) {
-            include "modals/edit_users.php";
-            include "modals/remove_users.php";
-            $counter = 0;
-            $id=0;
+        <?php
+        $array_users = (array)$users;
+        foreach ($array_users as $user) {
+            $enable = ($user -> isEnabled ()) ? 'Oui' : 'Non';
+            $is_connected = ($user -> isIsConnected ()) ? 'Oui' : 'Non';
             ?>
             <tr>
-                <?php foreach ($user as $u) {
-                    if ( ($counter != 0) && ($counter != 1) && ($counter != 3) && ($counter < 7) ) {
-                        ?>
-                        <td><?php echo $u; ?></td>
-                        <?php
-                    } else if ( ($counter != 0) && ($counter != 1) && ($counter != 3) && ($counter >= 7) ) {
-                        $boolean_var = ($u) ? 'Oui' : 'Non';
-                        echo "<td class='" . $boolean_var . "'>" . $boolean_var . "</td>";
-                    }
-                    $counter++;
-                } ?>
+                <?php
+                echo "<td>" . $user -> getUserName () . "</td>";
+                echo "<td>" . $user -> getLastName () . "</td>";
+                echo "<td>" . $user -> getName () . "</td>";
+                echo "<td>" . $user -> getPosition () . "</td>";
+                echo "<td class='" . $enable . "'>" . $enable . "</td>";
+                ?>
                 <td>
                     <div class="form-button-action">
                         <button type="button" title=""
                                 class="btn btn-link btn-primary btn-lg"
-                                data-original-title="Edit Task" data-target="#editUserRowModal"
+                                data-original-title="Edit Task"
+                                data-target="#editUserRowModal<?php echo $user->getId(); ?>"
                                 data-toggle="modal">
                             <i class="fa fa-edit"></i>
                         </button>
                         <button type="button" title=""
                                 class="btn btn-link btn-danger"
-                                data-original-title="Remove" data-target="#removeUserRowModal"
+                                data-original-title="Remove"
+                                data-target="#removeUserRowModal<?php echo $user->getId(); ?>"
                                 data-toggle="modal">
                             <i class="fa fa-times"></i>
+                        </button>
+                        <button type="button" title=""
+                                class="btn btn-link btn-warning"
+                                data-original-title="Remove"
+                                data-target="#pwdUserRowModal<?php echo $user->getId(); ?>"
+                                data-toggle="modal">
+                            <i class="fa fa-key"></i>
                         </button>
                     </div>
                 </td>
             </tr>
-        <?php } ?>
+            <?php
+            include "../dashbord/access/modals/edit_users.php";
+            include "../dashbord/access/modals/remove_users.php";
+            include "../dashbord/access/modals/pwd_users.php";
+        }
+        ?>
         </tbody>
     </table>
 </div>

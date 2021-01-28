@@ -8,7 +8,6 @@ require "../dao/userDao.dao.php";
 class UserDaoImpl implements UserDao
 {
 
-
     /**
      * @param int $id
      * @return User|null
@@ -148,12 +147,22 @@ class UserDaoImpl implements UserDao
         $is_conn = (int)$user -> isIsConnected ();
         $query = "UPDATE user 
                   SET    user_name    = '{$user -> getUserName ()}',
-                         password     =  md5('{$user -> getPassword ()}'),
                          name         = '{$user -> getName ()}',
                          last_name    = '{$user -> getLastName ()}',
                          position     = '{$user -> getPosition ()}', 
                          enabled      =  {$is_enable},
                          is_connected =  {$is_conn}
+                  WHERE id = {$user->getId ()}";
+        SPDO ::getInstance () -> updateOrDelete ( $query );
+    }
+
+    /**
+     * @param User $user
+     */
+    function updateWithPwd(User $user): void
+    {
+        $query = "UPDATE user 
+                  SET    password     =  md5('{$user -> getPassword ()}')
                   WHERE id = {$user->getId ()}";
         SPDO ::getInstance () -> updateOrDelete ( $query );
     }
@@ -174,12 +183,12 @@ class UserDaoImpl implements UserDao
      */
     private function getUsers(array $stmt_user): ?ArrayObject
     {
-        if ( sizeof ( $stmt_user ) != 0 ) {
+        if ( !empty( $stmt_user ) ) {
             $list_user = new ArrayObject();
             foreach ($stmt_user as $value) {
                 $user = new User( (int)$value[ 'id' ],
                     $value[ 'user_name' ],
-                    md5 ( $value[ 'password' ] ),
+                    $value[ 'password' ],
                     $value[ 'name' ],
                     $value[ 'last_name' ],
                     $value[ 'position' ],
@@ -205,20 +214,21 @@ class UserDaoImpl implements UserDao
         $stmt_user = SPDO ::getInstance () -> query ( $query );
         if ( $stmt_user != null ) {
             $result = $stmt_user -> fetchAll ();
+            $user = null;
             foreach ($result as $array) {
-                return new User( (int)$array[ 'id' ],
+                $user = new User( (int)$array[ 'id' ],
                     $array[ 'user_name' ],
-                    md5 ( $array[ 'password' ] ),
+                    $array[ 'password' ],
                     $array[ 'name' ],
                     $array[ 'last_name' ],
                     $array [ 'position' ],
                     (bool)$array[ 'enabled' ],
                     (bool)$array[ 'is_connected' ] );
             }
+            return $user;
         } else {
             return null;
         }
-        return null;
     }
 
 }

@@ -1,3 +1,9 @@
+<?php
+if ( !isset( $_SESSION ) ) {
+    session_start ();
+}
+include "includes/verification.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--   Head   -->

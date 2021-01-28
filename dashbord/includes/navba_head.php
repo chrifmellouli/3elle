@@ -89,7 +89,7 @@
                     </li>
                     <li>
                         <a class="see-all" href="javascript:void(0);">See all messages<i
-                                class="fa fa-angle-right"></i> </a>
+                                    class="fa fa-angle-right"></i> </a>
                     </li>
                 </ul>
             </li>
@@ -148,7 +148,7 @@
                     </li>
                     <li>
                         <a class="see-all" href="javascript:void(0);">See all notifications<i
-                                class="fa fa-angle-right"></i> </a>
+                                    class="fa fa-angle-right"></i> </a>
                     </li>
                 </ul>
             </li>
@@ -220,23 +220,15 @@
                                                             src="../../assets/img/profile.jpg">
                                 </div>
                                 <div class="u-text">
-                                    <h4>Hizrian</h4>
-                                    <p class="text-muted">hello@example.com</p><a
-                                        class="btn btn-xs btn-secondary btn-sm"
-                                        href="profile.html">View
-                                        Profile</a>
+                                    <h4><?php echo $_SESSION[ 'user_name' ] ?></h4>
+                                    <p class="text-muted"><?php echo $_SESSION[ 'position' ] ?></p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">My Profile</a>
-                            <a class="dropdown-item" href="#">My Balance</a>
-                            <a class="dropdown-item" href="#">Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Account Setting</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item"
+                               href="../../controllers/user.controller.php?action=logout&id=<?php echo $_SESSION[ 'id' ] ?>">Logout</a>
                         </li>
                     </div>
                 </ul>

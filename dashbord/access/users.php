@@ -1,9 +1,16 @@
-<?php $show_submenue_item_access = true; ?>
+<?php
+ini_set ( 'display_errors', 'on' );
+if ( !isset( $_SESSION ) ) {
+    session_start ();
+}
+include "../dashbord/includes/verification/verification.php";
+$show_submenue_item_access = true;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--   Head   -->
 <?php
-include "../includes/head/head.php";
+include "../dashbord/includes/head/head.php";
 ?>
 <!--   End Head   -->
 <body>
@@ -13,19 +20,19 @@ include "../includes/head/head.php";
     <div class="main-header">
         <!-- Logo Header -->
         <?php
-        include "../includes/logo_head.php";
+        include "../dashbord/includes/logo_head.php";
         ?>
         <!-- End Logo Header -->
         <!-- Navbar Header -->
         <?php
-        include "../includes/navba_head.php";
+        include "../dashbord/includes/navba_head.php";
         ?>
         <!-- End Navbar Header -->
     </div>
     <!-- End Navbar Header -->
     <!-- Sidebar -->
     <?php
-    include "../includes/side_bar.php";
+    include "../dashbord/includes/side_bar.php";
     ?>
     <!-- End Sidebar -->
     <div class="main-panel">
@@ -33,7 +40,7 @@ include "../includes/head/head.php";
             <div class="page-inner">
                 <!-- Page-header -->
                 <?php
-                include "pages_headers/users.php";
+                include "../dashbord/access/pages_headers/users.php";
                 ?>
                 <!-- End Page-header -->
                 <div class="row">
@@ -42,18 +49,18 @@ include "../includes/head/head.php";
                             <div class="card">
                                 <!-- Card-header -->
                                 <?php
-                                include "add_buttons/users.php";
+                                include "../dashbord/access/add_buttons/users.php";
                                 ?>
                                 <!-- End Card-header -->
                                 <div class="card-body">
                                     <!-- Modal -->
                                     <?php
-                                    include "modals/add_users.php";
+                                    include "../dashbord/access/modals/add_users.php";
                                     ?>
                                     <!-- End Modal -->
                                     <!-- Responsive Table -->
                                     <?php
-                                    include "tables/users.php";
+                                    include "../dashbord/access/tables/users.php";
                                     ?>
                                     <!-- End Responsive Table -->
                                 </div>
@@ -64,7 +71,7 @@ include "../includes/head/head.php";
             </div>
             <!-- Footer -->
             <?php
-            include "../includes/footer.php"
+            include "../dashbord/includes/footer.php"
             ?>
             <!-- End Footer -->
         </div>
@@ -73,7 +80,7 @@ include "../includes/head/head.php";
 <!-- End Page-container -->
 <!--   Core JS Files   -->
 <?php
-include "../includes/script/script.php";
+include "../dashbord/includes/script/script.php";
 ?>
 <!--   End Core JS Files   -->
 </body>

@@ -14,4 +14,9 @@ interface PrivilegeDao
      */
     public function findById(int $id): ?Privilege;
 
+    /**
+     * @return iterable|null
+     */
+    public function findAll(): ?iterable;
+
 }

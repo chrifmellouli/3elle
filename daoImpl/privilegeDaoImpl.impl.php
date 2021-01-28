@@ -41,4 +41,37 @@ class PrivilegeDaoImpl implements PrivilegeDao
         return null;
     }
 
+    /**
+     * @return iterable|null
+     * @throws Exception
+     */
+    public function findAll(): ?iterable
+    {
+        $query = "SELECT id, designation FROM privilege";
+        $stmt_privilege = SPDO ::getInstance () -> query ( $query ) -> fetchAll ();
+        return $this -> getAllPrivileges ( $stmt_privilege );
+    }
+
+    /**
+     * @param array $stmt_privilege
+     * @return iterable|null
+     * @throws Exception
+     */
+    private function getAllPrivileges(array $stmt_privilege): ?iterable
+    {
+        if ( ! empty( $stmt_privilege ) ) {
+            $list_privilege = new ArrayObject();
+            foreach ($stmt_privilege as $value) {
+                $privilege = new Privilege( (int)$value[ 'id' ],
+                    $value[ 'designation' ] );
+                $list_privilege -> append ( $privilege );
+                unset( $user );
+            }
+            unset( $value );
+            return $list_privilege;
+        } else {
+            return null;
+        }
+    }
+
 }
