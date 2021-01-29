@@ -4,6 +4,7 @@ if ( !isset( $_SESSION ) ) {
 }
 include "../dashbord/includes/verification/verification.php";
 $show_submenue_item_access = true;
+$show_submenue_authorization=true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,16 +48,8 @@ include "../dashbord/includes/head/head.php";
                         <div class="card-body">
                             <div class="card">
                                 <!-- Card-header -->
-                                <?php
-                                include "../dashbord/access/add_buttons/privileges.php";
-                                ?>
                                 <!-- End Card-header -->
                                 <div class="card-body">
-                                    <!-- Modal -->
-                                    <?php
-                                    include "../dashbord/access/modals/add_privileges.php";
-                                    ?>
-                                    <!-- End Modal -->
                                     <!-- Responsive Table -->
                                     <?php
                                     include "../dashbord/access/tables/privileges.php";

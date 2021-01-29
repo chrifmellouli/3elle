@@ -20,6 +20,11 @@ interface AuthorizationDao
     function save(Authorization $authorization): int;
 
     /**
+     * @param Authorization $authorization
+     */
+    function update(Authorization $authorization):void;
+
+    /**
      * @param int $id_user
      * @param int $id_privilege
      */

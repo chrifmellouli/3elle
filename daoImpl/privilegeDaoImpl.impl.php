@@ -16,8 +16,8 @@ class PrivilegeDaoImpl implements PrivilegeDao
      */
     public function findById(int $id): ?Privilege
     {
-        $query = "SELECT id, user_name, password, name, last_name, position, enabled, is_connected 
-                  FROM user WHERE id={$id}";
+        $query = "SELECT id, designation 
+                  FROM privilege WHERE id={$id}";
         return $this -> getPrivilege ( $query );
     }
 
@@ -59,7 +59,7 @@ class PrivilegeDaoImpl implements PrivilegeDao
      */
     private function getAllPrivileges(array $stmt_privilege): ?iterable
     {
-        if ( ! empty( $stmt_privilege ) ) {
+        if ( !empty( $stmt_privilege ) ) {
             $list_privilege = new ArrayObject();
             foreach ($stmt_privilege as $value) {
                 $privilege = new Privilege( (int)$value[ 'id' ],

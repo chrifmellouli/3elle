@@ -48,7 +48,7 @@ class Authorization
      */
     public function setIdUser(int $id_user): void
     {
-        if (strcmp ( gettype ( $id_user ), 'integer' ) == 0) {
+        if ( strcmp ( gettype ( $id_user ), 'integer' ) == 0 ) {
             $this -> _id_user = $id_user;
         } else {
             throw new Exception( 'Unexceped value for this filed' );
@@ -69,7 +69,7 @@ class Authorization
      */
     public function setIdPrivilege(int $id_privilege): void
     {
-        if (strcmp ( gettype ( $id_privilege ), 'integer' ) == 0) {
+        if ( strcmp ( gettype ( $id_privilege ), 'integer' ) == 0 ) {
             $this -> _id_privilege = $id_privilege;
         } else {
             throw new Exception( 'Unexceped value for this filed' );
@@ -90,7 +90,7 @@ class Authorization
      */
     public function setPermission(int $permission): void
     {
-        if ((strcmp ( gettype ( $permission ), 'integer' ) == 0) && ($permission >= 0) && ($permission <= 2)) {
+        if ( (strcmp ( gettype ( $permission ), 'integer' ) == 0) && ($permission >= 0) && ($permission <= 3) ) {
             $this -> _permission = $permission;
         } else {
             throw new Exception( 'Unexceped value for this filed' );

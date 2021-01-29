@@ -53,19 +53,141 @@
                         echo 'show';
                     } ?>" id="acess">
                         <ul class="nav nav-collapse">
-                            <li class="active">
+                            <li <?php if ( isset( $show_submenue_user ) ) {
+                                echo "class='active'";
+                            } ?>>
                                 <a href="../../controllers/user.controller.php?action=listAll">
                                     <span class="sub-item">Utilisateurs</span>
                                 </a>
                             </li>
-                            <li>
+                            <li <?php if ( isset( $show_submenue_authorization ) ) {
+                                echo "class='active'";
+                            } ?>>
                                 <a href="../../controllers/authorization.controller.php?action=listAll">
                                     <span class="sub-item">Permissions</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/dashbord/access/histories.php">
+                            <li <?php if ( isset( $show_submenue_history ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/history.controller.php?action=listAll">
                                     <span class="sub-item">Historiques</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item active submenu">
+                    <a data-toggle="collapse" href="#settings">
+                        <i class="fas fa-table"></i>
+                        <p>Gestion des paramètres</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php if ( isset( $show_submenue_item_settings ) ) {
+                        echo 'show';
+                    } ?>" id="settings">
+                        <ul class="nav nav-collapse">
+                            <li <?php if ( isset( $show_submenue_delivery ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/delivery.controller.php?action=listAll">
+                                    <span class="sub-item">Livraison</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_state ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/state.controller.php?action=listAll">
+                                    <span class="sub-item">Etats des commandes</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_blackList ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/blackList.controller.php?action=listAll">
+                                    <span class="sub-item">Liste noire</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item active submenu">
+                    <a data-toggle="collapse" href="#product">
+                        <i class="fas fa-table"></i>
+                        <p>Gestion des produits</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php if ( isset( $show_submenue_item_product ) ) {
+                        echo 'show';
+                    } ?>" id="product">
+                        <ul class="nav nav-collapse">
+                            <li <?php if ( isset( $show_submenue_category ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/category.controller.php?action=listAll">
+                                    <span class="sub-item">Catégories</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_option ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/option.controller.php?action=listAll">
+                                    <span class="sub-item">Options</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_product ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/product.controller.php?action=listAll">
+                                    <span class="sub-item">Produits</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item active submenu">
+                    <a data-toggle="collapse" href="#promotion">
+                        <i class="fas fa-table"></i>
+                        <p>Gestion des promotions</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php if ( isset( $show_submenue_item_promotions ) ) {
+                        echo 'show';
+                    } ?>" id="promotion">
+                        <ul class="nav nav-collapse">
+                            <li <?php if ( isset( $show_submenue_promotion ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/promotion.controller.php?action=listAll">
+                                    <span class="sub-item">Promotions</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_product_promotion ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/productPromoted.controller.php?action=listAll">
+                                    <span class="sub-item">Produits en promotion</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_product_gifted ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/promotedGift.controller.php?action=listAll">
+                                    <span class="sub-item">Produits cadeaux</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_gift_on_product ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/giftOnProduct.controller.php?action=listAll">
+                                    <span class="sub-item">Cadeaux sur produit</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_gift_on_order ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/giftOnOrder.controller.php?action=listAll">
+                                    <span class="sub-item">Cadeaux sur commande</span>
                                 </a>
                             </li>
                         </ul>

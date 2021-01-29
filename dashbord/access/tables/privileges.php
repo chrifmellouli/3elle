@@ -1,17 +1,9 @@
-<?php
-if ( isset( $_REQUEST[ 'auths' ] ) ) {
-    $serialised_auths = $_REQUEST[ 'auths' ];
-    $safe_object = str_replace ( "~~~~", "\0", $serialised_auths );
-    $auths = (array)unserialize ( $safe_object );
-} else {
-    $auths = [];
-}
-?>
 <div class="table-responsive">
     <table class="display table table-striped table-hover"
            id="multi-filter-select">
         <thead>
         <tr>
+            <th>Privilèges</th>
             <th>Utilisateur</th>
             <th>Permission</th>
             <th style="width: 10%;">Action</th>
@@ -19,31 +11,61 @@ if ( isset( $_REQUEST[ 'auths' ] ) ) {
         </thead>
         <tfoot>
         <tr>
+            <th></th>
             <th>Utilisateur</th>
             <th>Permission</th>
             <th>Action</th>
         </tr>
         </tfoot>
         <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <div class="form-button-action">
-                    <button type="button" data-toggle="tooltip" title=""
-                            class="btn btn-link btn-primary btn-lg"
-                            data-original-title="Edit Task">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" data-toggle="tooltip" title=""
-                            class="btn btn-link btn-danger"
-                            data-original-title="Remove">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-            </td>
-        </tr>
+        <?php
+        foreach ($privileges as $p) {
+            include "../dashbord/access/modals/add_privileges.php";
+            ?>
+            <tr class="bg-transparent">
+                <td>
+                    <h5 class="text-primary">Gestion <?php echo $p -> getDesignation (); ?></h5>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="form-button-action">
+                        <button type="button" title=""
+                                class="btn btn-link btn-success"
+                                data-original-title="Edit Task"
+                                data-target="#addPrivilegeRowModal<?php echo $p -> getId (); ?>"
+                                data-toggle="modal">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <?php
+            foreach ($authorizations as $a) {
+                if ( ($a[ 'designation' ] == $p -> getDesignation ()) && ($a[ 'permission' ]) > 0 ) {
+                    ?>
+                    <tr>
+                        <td>Gestion <?php echo $p -> getDesignation (); ?></td>
+                        <td><?php echo $a[ 'user_name' ]; ?></td>
+                        <td><?php echo $a[ 'permission' ]; ?></td>
+                        <td>
+                            <div class="form-button-action">
+                                <button type="button" title=""
+                                        class="btn btn-link btn-danger"
+                                        data-original-title="Remove"
+                                        data-target="#removePrivilegeRowModal<?php echo $p -> getId (); ?>"
+                                        data-toggle="modal">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                    include "../dashbord/access/modals/remove_privileges.php";
+                }
+            }
+        }
+        ?>
         </tbody>
     </table>
 </div>

@@ -4,6 +4,7 @@ if ( !isset( $_SESSION ) ) {
 }
 include "../includes/verification/verification.php";
 $show_submenue_item_access = true;
+$show_submenue_history=true;
 ?>
 <!DOCTYPE html>
 <html lang="en">

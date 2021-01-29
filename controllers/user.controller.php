@@ -1,4 +1,5 @@
 <?php
+ini_set ( 'display_errors', 'on' );
 if ( !isset( $_SESSION ) ) {
     session_start ();
 }
@@ -44,7 +45,11 @@ if ( isset( $action ) ) {
                 }
             }
             if ( isset( $user ) ) {
-                $user_controller -> addUser ( $user );
+                try {
+                    $user_controller -> addUser ( $user );
+                } catch (Exception $e) {
+                    $user_controller -> getActionServerSide () -> redirectServerSide ( ERROR_500 );
+                }
             } else {
                 $user_controller -> getActionServerSide () -> redirectServerSide ( ERROR_500 );
             }

@@ -29,10 +29,23 @@ class AuthorizationDaoImpl implements AuthorizationDao
     function save(Authorization $authorization): int
     {
         $query = "INSERT INTO authorization(permission, id_user, id_privilege) 
-                                VALUES ('{$authorization -> getPermission ()}' ,
-                                        '{$authorization -> getIdUser ()}',
-                                        '{$authorization -> getIdPrivilege ()}'";
-        return (int)SPDO ::getInstance () -> insert ( $query );
+                                VALUES ({$authorization -> getPermission ()} ,
+                                        {$authorization -> getIdUser ()},
+                                        {$authorization -> getIdPrivilege ()})";
+        SPDO ::getInstance () -> insert ( $query );
+        return $authorization -> getIdUser ();
+    }
+
+    /**
+     * @param Authorization $authorization
+     */
+    function update(Authorization $authorization): void
+    {
+        $query = "UPDATE authorization 
+                  SET    permission     = {$authorization->getPermission ()}  
+                  WHERE id_user = {$authorization->getIdUser ()}
+                  AND id_privilege = {$authorization->getIdPrivilege ()}";
+        SPDO ::getInstance () -> updateOrDelete ( $query );
     }
 
     /**
@@ -55,20 +68,10 @@ class AuthorizationDaoImpl implements AuthorizationDao
     {
         $stmt_auth = SPDO ::getInstance () -> query ( $query );
         if ( $stmt_auth != null ) {
-            $result = $stmt_auth -> fetchAll ();
-            foreach ($result as $array) {
-                return [
-                    $array[ 'user_name' ],
-                    $array[ 'id_user' ],
-                    $array[ 'id_privilege' ],
-                    $array[ 'permission' ],
-                    $array[ 'designation' ]
-                ];
-            }
+            return $stmt_auth -> fetchAll ();
         } else {
             return null;
         }
-        return null;
     }
 
 }

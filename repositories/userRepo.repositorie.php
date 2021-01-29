@@ -1,5 +1,7 @@
 <?php
 require '../daoImpl/userDaoImpl.impl.php';
+require '../daoImpl/privilegeDaoImpl.impl.php';
+require '../daoImpl/authorizationDaoImpl.impl.php';
 require 'repo.repositorie.php';
 
 
@@ -13,7 +15,8 @@ class UserRepo extends Repo
      * @var UserDaoImpl
      */
     protected UserDaoImpl $_user_dao_impl;
-
+    protected PrivilegeDaoImpl $_privilege_dao_impl;
+    protected AuthorizationDaoImpl $_authorization_dao_impl;
 
     /**
      * UserRepo constructor.
@@ -22,6 +25,8 @@ class UserRepo extends Repo
     {
         parent ::__construct ();
         $this -> _user_dao_impl = new UserDaoImpl();
+        $this -> _privilege_dao_impl = new PrivilegeDaoImpl();
+        $this -> _authorization_dao_impl = new AuthorizationDaoImpl();
     }
 
     /**
@@ -66,10 +71,15 @@ class UserRepo extends Repo
 
     /**
      * @param User $user
+     * @throws Exception
      */
     public function addUser(User $user): void
     {
-        $this -> _user_dao_impl -> save ( $user );
+        $last_id = $this -> _user_dao_impl -> save ( $user );
+        $array = (array)$this -> _privilege_dao_impl -> findAll ();
+        foreach ($array as $value) {
+            $this -> _authorization_dao_impl -> save ( new Authorization( $last_id, $value -> getId (), 0 ) );
+        }
         $this -> getActionServerSide () -> redirectServerSide ( '/controllers/user.controller.php?action=listAll' );
     }
 

@@ -1,10 +1,10 @@
 <?php
-ini_set ( 'display_errors', 'on' );
 if ( !isset( $_SESSION ) ) {
     session_start ();
 }
 include "../dashbord/includes/verification/verification.php";
 $show_submenue_item_access = true;
+$show_submenue_user = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -11,32 +11,51 @@ if ( isset( $_REQUEST[ 'action' ] ) ) {
 if ( isset( $action ) ) {
     switch ($action) {
         case "ajout":
-            //TODO
-            try {
-                $auth_controller -> addAuthorization ( null );
-            } catch (Exception $e) {
-                $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
+            if ( isset( $_POST[ 'id_user' ] ) && isset( $_POST[ 'id_privilege' ] )
+                && isset( $_POST[ 'permission' ] ) ) {
+                $id_user = $_POST[ 'id_user' ];
+                $id_privilege = $_POST[ 'id_privilege' ];
+                $permission = $_POST[ 'permission' ];
+                try {
+                    $authorization = new Authorization( $id_user, $id_privilege, $permission );
+                } catch (Exception $e) {
+                    $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
+                }
+            }
+            if ( isset( $authorization ) ) {
+                try {
+                    $auth_controller -> addAuthorization ( $authorization );
+                } catch (Exception $e) {
+                    $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
+                }
             }
             break;
         case "delete":
-            //TODO
-            try {
-                $auth_controller -> deleteAuthorization ( 0, 0 );
-            } catch (Exception $e) {
+            if ( isset( $_POST[ 'id_user' ] ) && isset( $_POST[ 'id_privilege' ] ) ) {
+                $id_user = $_POST[ 'id_user' ];
+                $id_privilege = $_POST[ 'id_privilege' ];
+                try {
+                    $auth_controller -> deleteAuthorization ( $id_user, $id_privilege );
+                } catch (Exception $e) {
+                    $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
+                }
+            } else {
                 $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
             }
             break;
         case "listAll":
-            //TODO
             $authorizations = $auth_controller -> listAllAuth ();
+            try {
+                $users = $auth_controller -> getUserDaoImpl () -> findAll ();
+            } catch (Exception $e) {
+                $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
+            }
             try {
                 $privileges = $auth_controller -> getPrivilegeDaoImpl () -> findAll ();
             } catch (Exception $e) {
                 $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
             }
-            $serialised_auths = trim ( serialize ( $authorizations) );
-            $safe_object = str_replace ( "\0", "~~~~", $serialised_auths );
-            $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/access/privileges.php?auths=' . $safe_object );
+            include "../dashbord/access/privileges.php";
             break;
         default:
             $auth_controller -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );

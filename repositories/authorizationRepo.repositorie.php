@@ -31,6 +31,7 @@ class AuthorizationRepo extends Repo
     {
         return $this -> _user_dao_impl;
     }
+
     /**
      * @var PrivilegeDaoImpl
      */
@@ -50,6 +51,7 @@ class AuthorizationRepo extends Repo
         $this -> _privilege_dao_impl = new PrivilegeDaoImpl();
         $this -> _user_dao_impl = new UserDaoImpl();
     }
+
     public function listAllAuth(): ?iterable
     {
         try {
@@ -60,13 +62,14 @@ class AuthorizationRepo extends Repo
             return null;
         }
     }
+
     /**
      * @param Authorization $authorization
      */
     public function addAuthorization(Authorization $authorization): void
     {
-        $this -> _authorization_dao_impl -> save ( $authorization );
-        $this -> getActionServerSide () -> redirectServerSide ( '/controllers/privileges.controller.php?action=listAll' );
+        $this -> _authorization_dao_impl -> update ( $authorization );
+        $this -> getActionServerSide () -> redirectServerSide ( '/controllers/authorization.controller.php?action=listAll' );
     }
 
     /**
@@ -80,7 +83,9 @@ class AuthorizationRepo extends Repo
                 $user = $this -> _user_dao_impl -> findById ( $id_user );
                 $privilege = $this -> _privilege_dao_impl -> findById ( $id_privilege );
                 if ( ($user != null) && ($privilege != null) ) {
-                    $this -> _authorization_dao_impl -> delete ( $id_user, $id_privilege );
+                    $authorization = new Authorization( $id_user, $id_privilege, 0 );
+                    $this -> _authorization_dao_impl -> update ( $authorization );
+                    $this -> getActionServerSide () -> redirectServerSide ( '/controllers/authorization.controller.php?action=listAll' );
                 } else {
                     $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
                 }
