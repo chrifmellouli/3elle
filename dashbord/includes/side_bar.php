@@ -190,6 +190,88 @@
                                     <span class="sub-item">Cadeaux sur commande</span>
                                 </a>
                             </li>
+                            <li <?php if ( isset( $show_submenue_discount_on_product ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/discountOnProduct.controller.php?action=listAll">
+                                    <span class="sub-item">Remise sur produit</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_discount_on_order ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/discountOnOrder.controller.php?action=listAll">
+                                    <span class="sub-item">Remise sur commande</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_free_del_on_product ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/freeDeliveryOnProduct.controller.php?action=listAll">
+                                    <span class="sub-item">Livraison gratuite sur produit</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_free_del_on_order ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/freeDeliveryOnOrder.controller.php?action=listAll">
+                                    <span class="sub-item">Livraison gratuite sur commande</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item active submenu">
+                    <a data-toggle="collapse" href="#order">
+                        <i class="fas fa-table"></i>
+                        <p>Gestion des commandes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php if ( isset( $show_submenue_item_order ) ) {
+                        echo 'show';
+                    } ?>" id="order">
+                        <ul class="nav nav-collapse">
+                            <li <?php if ( isset( $show_submenue_customer ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/customer.controller.php?action=listAll">
+                                    <span class="sub-item">Clients</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_order ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/order.controller.php?action=listAll">
+                                    <span class="sub-item">Commandes</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item active submenu">
+                    <a data-toggle="collapse" href="#supplier">
+                        <i class="fas fa-table"></i>
+                        <p>Gestion des fournisseurs</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?php if ( isset( $show_submenue_item_supplier ) ) {
+                        echo 'show';
+                    } ?>" id="supplier">
+                        <ul class="nav nav-collapse">
+                            <li <?php if ( isset( $show_submenue_supplier ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/supplier.controller.php?action=listAll">
+                                    <span class="sub-item">Fournisseurs</span>
+                                </a>
+                            </li>
+                            <li <?php if ( isset( $show_submenue_supply ) ) {
+                                echo "class='active'";
+                            } ?>>
+                                <a href="../../controllers/supply.controller.php?action=listAll">
+                                    <span class="sub-item">Fournitures</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

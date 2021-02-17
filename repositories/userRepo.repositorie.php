@@ -180,7 +180,6 @@ class UserRepo extends Repo
 
         } catch (Exception $e) {
             $this -> getActionServerSide () -> redirectServerSide ( '/dashbord/500.php' );
-            return null;
         }
     }
 

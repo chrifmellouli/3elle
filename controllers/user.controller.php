@@ -1,5 +1,4 @@
 <?php
-ini_set ( 'display_errors', 'on' );
 if ( !isset( $_SESSION ) ) {
     session_start ();
 }

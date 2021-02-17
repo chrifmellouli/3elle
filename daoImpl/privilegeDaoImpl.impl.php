@@ -38,7 +38,6 @@ class PrivilegeDaoImpl implements PrivilegeDao
         } else {
             return null;
         }
-        return null;
     }
 
     /**
@@ -65,7 +64,7 @@ class PrivilegeDaoImpl implements PrivilegeDao
                 $privilege = new Privilege( (int)$value[ 'id' ],
                     $value[ 'designation' ] );
                 $list_privilege -> append ( $privilege );
-                unset( $user );
+                unset($privilege);
             }
             unset( $value );
             return $list_privilege;
